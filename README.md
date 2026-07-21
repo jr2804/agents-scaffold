@@ -52,11 +52,33 @@ flowchart LR
 
 ## Quick start
 
+### Manual Integration
+
 1. Copy `AGENTS.md`, `.agents/`, and `INSTALL.md` into any repository.
 2. Fill `AGENTS.md` §2–4: one-sentence description, 5–10 always-on rules, child DOX index.
 3. Feed `INSTALL.md` to your agent — it performs the full migration.
 
 See [`INSTALL.md`](./INSTALL.md) for the complete migration checklist.
+
+### Agent Setup
+
+Pipe `INSTALL.md` straight from this repo into your coding agent and let it perform the migration autonomously:
+
+```bash
+# macOS / Linux
+curl -fsSL https://codeberg.org/jr2804/agents-scaffold/raw/branch/main/INSTALL.md | <agent-cli>
+
+# Windows (PowerShell)
+irm https://codeberg.org/jr2804/agents-scaffold/raw/branch/main/INSTALL.md | <agent-cli>
+```
+
+Adapt `<agent-cli>` to your tool's prompt-from-stdin entry point (e.g. Claude Code, opencode, aider, fabric).
+
+Or paste this single instruction into any agent:
+
+```
+Please install and implement the framework given in https://codeberg.org/jr2804/agents-scaffold/raw/branch/main/INSTALL.md
+```
 
 ## Principles
 

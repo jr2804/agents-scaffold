@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="64" viewBox="0 0 480 64" role="img" aria-labelledby="sig-title sig-desc">
+  <title id="sig-title">README made with beautify-github-readme</title>
+  <desc id="sig-desc">Compact footer signature: 'README made with beautify-github-readme' with an outbound arrow. Slate background and teal accent match the agents-scaffold hero.</desc>
+
+  <!-- Canvas (matches hero palette) -->
+  <rect width="480" height="64" rx="14" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Eyebrow -->
+  <text x="24" y="38" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#64748B">README MADE WITH</text>
+
+  <!-- Project-native motif (file-tree glyph from hero) -->
+  <text x="176" y="38" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" fill="#334155">└─</text>
+
+  <!-- Skill name -->
+  <text x="208" y="39" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16" font-weight="600" fill="#14B8A6">beautify-github-readme</text>
+
+  <!-- Outbound arrow cue -->
+  <text x="444" y="39" font-family="ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="18" fill="#14B8A6">↗</text>
+</svg>

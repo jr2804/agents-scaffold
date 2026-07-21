@@ -1,48 +1,79 @@
-# agents-scaffold
+<p align="center">
+  <img src="./assets/readme/hero.svg" width="100%" alt="agents-scaffold — self-documenting AGENTS.md hierarchy. AGENTS.md at the root always injected, with five demand-loaded files (ONBOARDING, POLICIES, FILES, HISTORY, MAINTENANCE) under .agents/.">
+</p>
 
-Self-documenting AGENTS.md framework for any repository.
+> **AGENTS.md is for agents, not humans.** One sentence of project
+> description, then rules. Everything else is demand-loaded.
+
+**agents-scaffold** ships a copy-paste convention for keeping
+`AGENTS.md` lean. The root file holds only the rules every LLM call
+needs; everything else lives in `.agents/` files (loaded on demand)
+or subtree `AGENTS.md` files (loaded on directory entry).
 
 ## Problem
 
-AGENTS.md is injected on every LLM call. Most files are bloated with
-tree views, history entries, TODO lists, and verbose descriptions —
-all things the agent can discover on demand. Every redundant byte
-dilutes the signal-to-noise ratio of every LLM call.
+`AGENTS.md` is injected on every LLM call. Most files are bloated with
+tree views, history entries, TODO lists, and verbose descriptions — all
+things the agent can discover on demand. Every redundant byte dilutes
+the signal-to-noise ratio of every call.
 
-DOX hierarchy solves this: put only always-needed rules in root
-AGENTS.md. Everything else goes into `.agents/` files (demand-loaded)
-or subtree AGENTS.md files (loaded when entering that directory).
+## Mechanism
 
-## Structure
+```mermaid
+flowchart LR
+  Call([LLM call])
 
+  subgraph Root["root AGENTS.md · always injected"]
+    R["1-sentence description<br/>5–10 always-on rules<br/>⛔ no-patching block"]
+  end
+
+  subgraph Agents[".agents/ · demand-loaded"]
+    direction TB
+    A1[ONBOARDING.md]
+    A2[POLICIES.md]
+    A3[FILES.md]
+    A4[HISTORY.md]
+    A5[MAINTENANCE.md]
+  end
+
+  subgraph Sub["subtree AGENTS.md · on directory entry"]
+    direction TB
+    S1["src/api/AGENTS.md"]
+    S2["tests/AGENTS.md"]
+  end
+
+  Call ==>|always| R
+  Call -.->|new session| A1
+  Call -.->|touching files| A3
+  Call -.->|background| A4
+  Call -.->|enter dir| S1
+  Call -.->|enter dir| S2
 ```
-AGENTS.md              Always-injected rules + .agents/ index
-.agents/
-├── ONBOARDING.md      Read on new session
-├── POLICIES.md        Always applicable (boundaries, verification)
-├── FILES.md           Source-of-truth locations
-├── HISTORY.md         Past decisions with git refs
-├── MAINTENANCE.md     How to keep .agents/ current
-└── skills/            Project-specific agent skills
-INSTALL.md             Scaffold instructions (feed to agent)
-```
 
-## Key principles
+## Quick start
 
-- **AGENTS.md is for agents, not humans.** Max 1 sentence project
-  description. Refer to README for details.
-- **No tree views.** Generate on demand.
-- **No history.** Git log has it. Only record decisions costly to
-  rediscover (in `.agents/HISTORY.md` with commit refs).
-- **No TODO lists.** Use issue trackers or beads.
-- **⛔ No Patching.** Root AGENTS.md has a blocker section. Content
-  appended by tools after this section is invalid.
-- **DOX hierarchy.** Subtree AGENTS.md files for local contracts.
-  Root stays lean.
+1. Copy `AGENTS.md`, `.agents/`, and `INSTALL.md` into any repository.
+2. Fill `AGENTS.md` §2–4: one-sentence description, 5–10 always-on rules, child DOX index.
+3. Feed `INSTALL.md` to your agent — it performs the full migration.
+
+See [`INSTALL.md`](./INSTALL.md) for the complete migration checklist.
+
+## Principles
+
+| Principle | Why it matters |
+|---|---|
+| AGENTS.md is for agents, not humans | Max signal density on every call |
+| No tree views | Generate on demand: `rg --files \| tree-cli --fromfile` |
+| No history | Git log has it; only record decisions costly to rediscover |
+| No TODO lists | Use an issue tracker or `beads` |
+| DOX hierarchy | Subtree AGENTS.md files own local contracts; root stays lean |
+| ⛔ No Patching | Content appended after the blocker section is invalid and must be removed |
 
 ## Credits
 
-Base convention: [dox](https://github.com/agent0ai/dox) — self-documenting
-AGENTS.md hierarchy. Extended with structured `.agents/` files and
-anti-bloat patterns from the
-[knox](https://github.com/anomalyco/knox) project.
+- Base convention: [dox](https://github.com/agent0ai/dox) — self-documenting AGENTS.md hierarchy.
+- Extended with structured `.agents/` files and anti-bloat patterns from [knox](https://github.com/anomalyco/knox).
+
+<p align="center">
+  <a href="https://github.com/oil-oil/beautify-github-readme"><img src="./assets/readme/made-with-beautify.svg" width="300" alt="README made with beautify-github-readme"></a>
+</p>

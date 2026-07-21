@@ -1,0 +1,50 @@
+name: release
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Compute CalVer tag
+        id: calver
+        run: |
+          YEAR=$(date +%Y)
+          MONTH=$(date +%-m)
+          PREFIX="${YEAR}.${MONTH}."
+          LAST=$(git tag -l "${PREFIX}*" | sort -V | tail -1)
+          if [ -z "$LAST" ]; then
+            NEXT="${PREFIX}1"
+          else
+            PATCH=$(echo "$LAST" | sed "s/^${PREFIX}//")
+            NEXT="${PREFIX}$((PATCH + 1))"
+          fi
+          echo "tag=$NEXT" >> $GITHUB_OUTPUT
+
+      - name: Create tag
+        run: |
+          git config user.name "agents-scaffold bot"
+          git config user.email "bot@agents-scaffold"
+          git tag "${{ steps.calver.outputs.tag }}"
+          git push origin "${{ steps.calver.outputs.tag }}"
+
+      - name: Create release
+        env:
+          FORGEJO_TOKEN: ${{ secrets.FORGEJO_TOKEN }}
+        run: |
+          TAG="${{ steps.calver.outputs.tag }}"
+          API="https://codeberg.org/api/v1"
+          REPO="${{ github.repository }}"
+          curl -s -X POST "$API/repos/$REPO/releases" \
+            -H "Authorization: token $FORGEJO_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "{\"tag_name\":\"$TAG\",\"name\":\"$TAG\",\"prerelease\":false}"

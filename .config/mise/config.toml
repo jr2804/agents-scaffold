@@ -1,0 +1,5 @@
+[tools]
+"bun" = "latest"
+
+# Markdown formatter/linter
+"rumdl" = "latest"

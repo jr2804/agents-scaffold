@@ -18,6 +18,10 @@ Thumbs.db
 *.swp
 *.swo
 
+# Keep .agents/ DOX files tracked (override any blanket ignore)
+/.agents/*
+!/.agents/*.md
+
 # Temp
 tmp/
 temp/

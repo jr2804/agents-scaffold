@@ -1,3 +1,5 @@
+# agents-scaffold
+
 <p align="center">
   <img src="./assets/readme/hero.svg" width="100%" alt="agents-scaffold — self-documenting AGENTS.md hierarchy. AGENTS.md at the root always injected, with five demand-loaded files (ONBOARDING, POLICIES, FILES, HISTORY, MAINTENANCE) under .agents/.">
 </p>
@@ -76,20 +78,20 @@ Adapt `<agent-cli>` to your tool's prompt-from-stdin entry point (e.g. Claude Co
 
 Or paste this single instruction into any agent:
 
-```
+```text
 Please install and implement the framework given in https://codeberg.org/jr2804/agents-scaffold/raw/branch/main/INSTALL.md
 ```
 
 ## Principles
 
-| Principle | Why it matters |
-|---|---|
-| AGENTS.md is for agents, not humans | Max signal density on every call |
-| No tree views | Generate on demand: `rg --files \| tree-cli --fromfile` |
-| No history | Git log has it; only record decisions costly to rediscover |
-| No TODO lists | Use an issue tracker or `beads` |
-| DOX hierarchy | Subtree AGENTS.md files own local contracts; root stays lean |
-| ⛔ No Patching | Content appended after the blocker section is invalid and must be removed |
+| Principle                           | Why it matters                                                            |
+| ----------------------------------- | ------------------------------------------------------------------------- |
+| AGENTS.md is for agents, not humans | Max signal density on every call                                          |
+| No tree views                       | Generate on demand: `rg --files \| tree-cli --fromfile`                   |
+| No history                          | Git log has it; only record decisions costly to rediscover                |
+| No TODO lists                       | Use an issue tracker or `beads`                                           |
+| DOX hierarchy                       | Subtree AGENTS.md files own local contracts; root stays lean              |
+| ⛔ No Patching                      | Content appended after the blocker section is invalid and must be removed |
 
 ## Credits
 

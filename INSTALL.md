@@ -2,6 +2,42 @@
 
 Feed this file to your coding agent to set up the DOX hierarchy.
 
+> **⚠ Note on `.agents/` directory**
+> The `.agents/` subdirectory is a common convention — tools, skills, and
+> agent runtimes may already create one in your project. It is also
+> frequently listed in `.gitignore` patterns (especially when added by
+> Copilot, Cursor, or similar tooling). **You must add git exclusion
+> rules** in your project's `.gitignore` so that the DOX markdown files
+> under `.agents/` are tracked by version control:
+>
+> ```gitignore
+> # Keep .agents/ DOX .md files tracked (override any blanket ignore)
+> /.agents/*
+> !/.agents/*.md
+> ```
+>
+> The second line is the essential one — it un-ignores `.md` files inside
+> `.agents/`. The first line (`/.agents/*`) sets up the ignore rule that
+> the second line then overrides.
+>
+> **If your project's `.gitignore` already has a blanket ignore for this
+> directory** (e.g. `/.agents/`, `/.agents`, or just `.agents`), the
+> first line is redundant — you only need the `!/.agents/*.md` line:
+>
+> ```gitignore
+> # Keep .agents/ DOX .md files tracked (override existing ignore)
+> !/.agents/*.md
+> ```
+>
+> **Conversely, if your project already has explicit inclusion rules**
+> for `.agents/` (e.g. `!.agents/` + `!.agents/**`, or a
+> project-specific pattern that already covers `.md` files), then no
+> gitignore change is needed at all — skip the whole block.
+>
+> In both cases, the goal is the same: only the five DOX `.md` files
+> are tracked; anything else tools may drop in `.agents/` (configs,
+> binaries, lock files) stays ignored.
+
 ## Files to create
 
 ### Root `AGENTS.md`
@@ -27,9 +63,9 @@ project-specific policies under the correct section.
 
 Map each category of definition to its source file. Example:
 
-| What | Where |
-|------|-------|
-| Path constants | `src/project/paths.py` |
+| What            | Where                   |
+| --------------- | ----------------------- |
+| Path constants  | `src/project/paths.py`  |
 | Config defaults | `src/project/config.py` |
 
 ### `.agents/HISTORY.md`
@@ -59,6 +95,7 @@ Keep generic template. Only change update triggers if project has unique needs.
 
 Search AGENTS.md for content inserted by tools (beads, linters, CI bots).
 If found:
+
 - Move legitimate rules to the correct `.agents/` file.
 - Delete everything after the ⛔ No Patching block.
 
@@ -66,7 +103,7 @@ If found:
 
 For directories with dense local contracts:
 
-```
+```text
 src/api/AGENTS.md     → API-specific rules
 tests/AGENTS.md       → Testing conventions
 ```

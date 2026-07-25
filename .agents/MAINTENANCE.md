@@ -22,4 +22,4 @@ How to keep `.agents/` files current.
 | `ONBOARDING.md` | Project structure, tooling, or entry points change |
 | `POLICIES.md` | Boundaries, priorities, or verification change |
 | `FILES.md` | Path constants, config keys, or naming conventions change |
-| `HISTORY.md` | Notable decision made or resolved
+| `HISTORY.md` | Notable decision made or resolved |

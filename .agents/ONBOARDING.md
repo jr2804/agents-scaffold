@@ -33,6 +33,7 @@ One-line description. Full docs at `README.md` or `docs/`.
 ## Available tools
 
 If MCP/CLI tools are available for this workspace:
+
 - **codegraph** — symbol search, call graphs
 - **grepai** — find code by intent
 - **repowise** — architecture overview, risk, health

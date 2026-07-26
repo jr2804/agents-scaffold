@@ -29,6 +29,21 @@ Always applicable. Boundaries, priorities, verification, checklist.
 - No unrelated refactoring while fixing a bug.
 - When changing tests, update only directly affected tests.
 
+## Code quality
+
+Universal defaults. Project-specific standards live in child AGENTS.md.
+
+- **SRP** — one reason to change per module/function. If a name needs "and",
+  split it.
+- **DRY** — before adding a function/constant/config block, check whether one
+  already exists. Extract on the _third_ occurrence (Rule of Three), not earlier.
+- **Redundant code** — remove dead branches, unreachable conditions, and unused
+  params/imports before finishing.
+- **Duplication vs. abstraction** — prefer a little duplication over the wrong
+  premature abstraction.
+- No new code-quality tooling, patterns, or value-object rules by default — opt
+  in per project.
+
 ## Completion checklist
 
 - Change solves the stated problem

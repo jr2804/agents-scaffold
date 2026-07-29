@@ -11,7 +11,8 @@ DOX-hierarchy child AGENTS.md covers the area being edited.
 - Work products, source materials, instructions, records, assets, and durable docs
   must stay understandable from the nearest applicable AGENTS.md plus every parent
   AGENTS.md above it.
-- Do not duplicate/repeat rules that have already been declared in lower directory levels.
+- Do not duplicate/repeat rules declared elsewhere in the DOX tree (parent, child,
+  sibling, or `.agents/`). See **DOX authoring** in `.agents/POLICIES.md`.
 
 ### Read Before Editing
 
@@ -66,13 +67,13 @@ Default section order:
 
 ### Style
 
-- Keep docs concise, current, and operational
-- Document stable contracts, not diary entries
-- Put broad rules in parent docs and concrete details in child docs
-- Prefer direct bullets with explicit names
-- Do not duplicate rules across many files unless each scope needs a local version
-- Delete stale notes instead of explaining history
-- Trim obvious statements, repeated rules, misplaced detail, and warnings for risks that no longer exist
+Authoring rules live in **DOX authoring** (`.agents/POLICIES.md`) — tier
+assignment, reference-don't-restate, rule-first rationale, size budget.
+Apply them on every DOX change. Summary:
+
+- A rule lives in the **highest tier that fully applies**; when unsure, `.agents/POLICIES.md`.
+- Reference, don't restate — one canonical home, pointer lines everywhere else.
+- Keep docs concise, current, and operational. Document stable contracts, not diary entries.
 
 ### Closeout
 

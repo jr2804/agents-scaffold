@@ -51,12 +51,55 @@ Universal defaults. Project-specific standards live in child AGENTS.md.
 - No unintended side effects introduced
 - No secrets added or exposed
 
-## Content rules (keep AGENTS.md lean)
+## DOX authoring (keep AGENTS.md lean)
+
+AGENTS.md and `.agents/` files share limited context. Bloat and duplication
+are the failure mode — they waste context on every entry to a subtree and
+drift apart as rules change.
+
+### Where a rule lives
+
+Answer one question: **what is the highest (most general) tier that fully
+applies?** Put the rule there and nowhere else.
+
+- Applies to **all code in the project**, not one subtree →
+  `.agents/POLICIES.md`. This is the default. When unsure, it goes here.
+- Meaningful **only inside one subtree** (e.g. framework-specific template
+  rules) → that subtree's `AGENTS.md`.
+- Just helps navigation → the parent's Child DOX Index, nothing else.
+
+`.agents/POLICIES.md` is the gravity well for universal rules. A subtree
+AGENTS.md only contains rules that are meaningless outside that subtree.
+
+### Reference, don't restate
+
+A rule appears in **exactly one file**. Every other file that touches it
+uses a **pointer line**: `<topic> — see <file>`. Never copy the rule, the
+rationale, or the code example into the second file. If the canonical home
+needs a code example, it lives there once — linked to, never duplicated.
+
+### Rule first, rationale second, never third
+
+A DOX line is the rule. If a rationale is costly to rediscover, add one
+short clause. Never multi-paragraph explanations or more than one
+❌/✅ code pair per rule — those belong in a skill or a `docs/` page, linked
+once.
+
+### Content rules
 
 - **No tree views.** Generate on demand with `rg --files | tree-cli --fromfile`.
-- **No history.** Git log has it. Only record decisions costly to rediscover
+- **No history.** Git log has it. Record only decisions costly to rediscover
   (in `.agents/HISTORY.md` with commit refs).
 - **No TODO lists.** Use issue trackers or beads.
+
+### Size budget
+
+- `.agents/` files: ≤ **120 lines**. They are always-injected context.
+- Subtree `AGENTS.md`: ≤ **250 lines**. Loaded cumulatively with every
+  parent on entry — the deep-path cost adds up fast.
+
+Exceeding the budget signals the doc is restating instead of pointing, or
+hoarding rationale. Cut first; split the subtree only as a last resort.
 
 ## Verification
 

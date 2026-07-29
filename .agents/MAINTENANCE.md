@@ -10,10 +10,13 @@ How to keep `.agents/` files current.
 
 ## Principles
 
-- **Single source of truth.** Each rule lives in exactly one file. Cross-reference,
-  never duplicate.
+- **Single source of truth.** Each rule lives in exactly one file. The tier,
+  pointer, rationale, and size rules are in **DOX authoring**
+  (`.agents/POLICIES.md`) — consult it on every DOX change.
 - **AGENTS.md is an index.** It points to `.agents/` files, does not replace them.
 - **No tree figures.** Use `rg --files | tree-cli --fromfile` on demand.
+- **Cut over explain.** When a doc exceeds its size budget, the fix is to point
+  to the canonical home, not to re-summarize it.
 
 ## File update triggers
 

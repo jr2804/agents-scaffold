@@ -14,9 +14,6 @@ How to keep `.agents/` files current.
   pointer, rationale, and size rules are in **DOX authoring**
   (`.agents/POLICIES.md`) — consult it on every DOX change.
 - **AGENTS.md is an index.** It points to `.agents/` files, does not replace them.
-- **No tree figures.** Use `rg --files | tree-cli --fromfile` on demand.
-- **Cut over explain.** When a doc exceeds its size budget, the fix is to point
-  to the canonical home, not to re-summarize it.
 
 ## File update triggers
 
@@ -26,3 +23,4 @@ How to keep `.agents/` files current.
 | `POLICIES.md` | Boundaries, priorities, or verification change |
 | `FILES.md` | Path constants, config keys, or naming conventions change |
 | `HISTORY.md` | Notable decision made or resolved |
+| `MAINTENANCE.md` | Maintenance procedures, triggers, or principles change |

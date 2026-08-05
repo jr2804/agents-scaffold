@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="340" viewBox="0 0 1200 340" role="img" aria-labelledby="hero-title hero-desc">
   <title id="hero-title">agents-scaffold — self-documenting AGENTS.md hierarchy</title>
-  <desc id="hero-desc">Project name and one-line value on the left; on the right, a card showing the DOX file tree: AGENTS.md at the root and five demand-loaded files under .agents/.</desc>
+  <desc id="hero-desc">Project name and one-line value on the left; on the right, a card showing the DOX file tree: AGENTS.md at the root and demand-loaded files under .agents/.</desc>
 
   <!-- Canvas -->
   <rect width="1200" height="340" rx="20" fill="#0F172A"/>

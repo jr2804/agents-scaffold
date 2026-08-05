@@ -14,19 +14,29 @@ Feed this file to your coding agent to set up the DOX hierarchy.
 > # Keep .agents/ DOX .md files tracked (override any blanket ignore)
 > /.agents/*
 > !/.agents/*.md
+> !/.agents/history/
+> !/.agents/history/**
+>
+> # Implementation plans — mutable working artifacts, never committed
+> /.agents/plans/
 > ```
 >
-> The second line is the essential one — it un-ignores `.md` files inside
-> `.agents/`. The first line (`/.agents/*`) sets up the ignore rule that
-> the second line then overrides.
+> The first two `!` lines un-ignore `.md` files directly in `.agents/` and
+> the `.agents/history/` subdirectory (durable decision records). The
+> `/.agents/plans/` line explicitly excludes implementation plans.
 >
 > **If your project's `.gitignore` already has a blanket ignore for this
 > directory** (e.g. `/.agents/`, `/.agents`, or just `.agents`), the
-> first line is redundant — you only need the `!/.agents/*.md` line:
+> first line is redundant — you only need the `!` lines:
 >
 > ```gitignore
-> # Keep .agents/ DOX .md files tracked (override existing ignore)
+> # Keep .agents/ DOX files tracked (override existing ignore)
 > !/.agents/*.md
+> !/.agents/history/
+> !/.agents/history/**
+>
+> # Implementation plans — mutable working artifacts, never committed
+> /.agents/plans/
 > ```
 >
 > **Conversely, if your project already has explicit inclusion rules**
@@ -34,9 +44,10 @@ Feed this file to your coding agent to set up the DOX hierarchy.
 > project-specific pattern that already covers `.md` files), then no
 > gitignore change is needed at all — skip the whole block.
 >
-> In both cases, the goal is the same: only the five DOX `.md` files
-> are tracked; anything else tools may drop in `.agents/` (configs,
-> binaries, lock files) stays ignored.
+> In all cases, the goal is the same: only DOX `.md` files and
+> `.agents/history/` are tracked; implementation plans and anything else
+> tools may drop in `.agents/` (configs, binaries, lock files) stay
+> ignored.
 
 ## Files to create
 
@@ -75,6 +86,35 @@ Start empty. Add entries as decisions are made.
 ### `.agents/MAINTENANCE.md`
 
 Keep generic template. Only change update triggers if project has unique needs.
+
+## Update mode (when files already exist)
+
+If `AGENTS.md` and `.agents/` already exist, this is an **update**, not a
+first-time install. Do not bail out — the template may have changed.
+
+### What to do
+
+1. **Fetch the latest `INSTALL.md`** from the same remote URL. Use it as the
+   source of truth for what the current template looks like.
+2. **Diff each file structurally** — do not just check existence. Compare
+   sections, rules, and entries against what is on disk.
+3. **Apply additions** — new sections in `POLICIES.md`, new files/dirs in
+   `.agents/`, new gitignore patterns.
+4. **Apply rewordings** — if a rule's wording changed in the template (e.g.
+   "No history" → "No history in AGENTS.md files"), update it.
+5. **Preserve project-specific customizations** — project rules in
+   `AGENTS.md`, `FILES.md` entries, `HISTORY.md` entries, and any
+   project-specific policies added under the correct sections in
+   `POLICIES.md`. These are the user's content, not template content.
+6. **Report what changed** — list each file and whether it was added,
+   updated, or left unchanged.
+
+### What NOT to do
+
+- Do NOT delete or overwrite project-specific content (project rules,
+  FILES.md entries, HISTORY entries, custom policies).
+- Do NOT skip the update just because files exist — the template evolves.
+- Do NOT re-add content that was intentionally removed by the user.
 
 ## Migration instructions
 

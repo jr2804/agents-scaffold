@@ -1,7 +1,7 @@
 # agents-scaffold
 
 <p align="center">
-  <img src="./assets/readme/hero.svg" width="100%" alt="agents-scaffold — self-documenting AGENTS.md hierarchy. AGENTS.md at the root always injected, with five demand-loaded files (ONBOARDING, POLICIES, FILES, HISTORY, MAINTENANCE) under .agents/.">
+  <img src="./assets/readme/hero.svg" width="100%" alt="agents-scaffold — self-documenting AGENTS.md hierarchy. AGENTS.md at the root always injected, with demand-loaded files under .agents/ (ONBOARDING, POLICIES, FILES, HISTORY, MAINTENANCE, plans, history).">
 </p>
 
 > **AGENTS.md is for agents, not humans.** One sentence of project
@@ -36,6 +36,8 @@ flowchart LR
     A3[FILES.md]
     A4[HISTORY.md]
     A5[MAINTENANCE.md]
+    A6[plans/]
+    A7[history/]
   end
 
   subgraph Sub["subtree AGENTS.md · on directory entry"]
@@ -48,6 +50,8 @@ flowchart LR
   Call -.->|new session| A1
   Call -.->|touching files| A3
   Call -.->|background| A4
+  Call -.->|background (overflow)| A7
+  Call -.->|working on feature| A6
   Call -.->|enter dir| S1
   Call -.->|enter dir| S2
 ```
@@ -79,7 +83,7 @@ Adapt `<agent-cli>` to your tool's prompt-from-stdin entry point (e.g. Claude Co
 Or paste this single instruction into any agent:
 
 ```text
-Please install and implement the framework given in https://codeberg.org/jr2804/agents-scaffold/raw/branch/main/INSTALL.md
+Please install or update the framework given in https://codeberg.org/jr2804/agents-scaffold/raw/branch/main/INSTALL.md
 ```
 
 ## Principles

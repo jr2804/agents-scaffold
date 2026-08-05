@@ -21,6 +21,11 @@ Thumbs.db
 # Keep .agents/ DOX files tracked (override any blanket ignore)
 /.agents/*
 !/.agents/*.md
+!/.agents/history/
+!/.agents/history/**
+
+# Implementation plans — mutable working artifacts, never committed
+/.agents/plans/
 
 # Temp
 tmp/

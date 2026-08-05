@@ -97,13 +97,15 @@ needed.
 
 ## .agents/ files — demand-loaded, not always injected
 
-| File             | Load when                   | Purpose                                         |
-| ---------------- | --------------------------- | ----------------------------------------------- |
-| `ONBOARDING.md`  | New session (first time)    | Project orientation, entry points               |
-| `POLICIES.md`    | Always                      | Boundaries, priorities, verification, checklist |
-| `FILES.md`       | Touching files or config    | Path constants, source-of-truth locations       |
-| `HISTORY.md`     | Background (past decisions) | Recorded decisions with git refs                |
-| `MAINTENANCE.md` | Changing `.agents/`         | How to keep DOX files current                   |
+| File                    | Load when                   | Purpose                                         |
+| ----------------------- | --------------------------- | ----------------------------------------------- |
+| `ONBOARDING.md`         | New session (first time)    | Project orientation, entry points               |
+| `POLICIES.md`           | Always                      | Boundaries, priorities, verification, checklist |
+| `FILES.md`              | Touching files or config    | Path constants, source-of-truth locations       |
+| `HISTORY.md`            | Background (past decisions) | Recorded decisions with git refs                |
+| `MAINTENANCE.md`        | Changing `.agents/`         | How to keep DOX files current                    |
+| `plans/`                | Working on a feature        | Implementation plans (gitignored)                |
+| `history/`              | Background (overflow)       | Archived decisions and completed plans           |
 
 ## Tools & skills
 

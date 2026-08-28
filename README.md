@@ -50,7 +50,7 @@ flowchart LR
   Call -.->|new session| A1
   Call -.->|touching files| A3
   Call -.->|background| A4
-  Call -.->|background (overflow)| A7
+  Call -.->|"background (overflow)"| A7
   Call -.->|working on feature| A6
   Call -.->|enter dir| S1
   Call -.->|enter dir| S2

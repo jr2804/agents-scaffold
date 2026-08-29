@@ -22,38 +22,46 @@ the signal-to-noise ratio of every call.
 ## Mechanism
 
 ```mermaid
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'primaryColor': '#eff6ff',
+    'primaryTextColor': '#1e293b',
+    'primaryBorderColor': '#3b82f6',
+    'lineColor': '#64748b',
+    'fontSize': '13px',
+    'fontFamily': 'Inter, system-ui, -apple-system, sans-serif'
+  }
+}}%%
 flowchart LR
-  Call([LLM call])
+  LLM(["🤖 <b>LLM Call</b><br/><i>Prompt Context</i>"]):::main
 
-  subgraph Root["root AGENTS.md · always injected"]
-    R["1-sentence description<br/>5–10 always-on rules<br/>⛔ no-patching block"]
-  end
-
-  subgraph Agents[".agents/ · demand-loaded"]
+  subgraph S_Root[" <b>Root AGENTS.md</b> · Always Injected "]
     direction TB
-    A1[ONBOARDING.md]
-    A2[POLICIES.md]
-    A3[FILES.md]
-    A4[HISTORY.md]
-    A5[MAINTENANCE.md]
-    A6[plans/]
-    A7[history/]
+    R["<b>Root Rail</b><br/>• 1-sentence description<br/>• 5–10 essential rules<br/>• ⛔ No-patching block"]:::rootNode
   end
 
-  subgraph Sub["subtree AGENTS.md · on directory entry"]
+  subgraph S_Agents[" <b>.agents/</b> · Demand-Loaded "]
     direction TB
-    S1["src/api/AGENTS.md"]
-    S2["tests/AGENTS.md"]
+    A_Core["<b>Core Policies & Entry</b><br/>• ONBOARDING.md <i>(new session)</i><br/>• POLICIES.md <i>(always / standards)</i><br/>• FILES.md <i>(file & path constants)</i>"]:::agentNode
+    A_Context["<b>Context & Knowledge</b><br/>• HISTORY.md & history/ <i>(decisions)</i><br/>• MAINTENANCE.md <i>(keeping DOX lean)</i><br/>• plans/ <i>(active features, gitignored)</i>"]:::agentNode
   end
 
-  Call ==>|always| R
-  Call -.->|new session| A1
-  Call -.->|touching files| A3
-  Call -.->|background| A4
-  Call -.->|"background (overflow)"| A7
-  Call -.->|working on feature| A6
-  Call -.->|enter dir| S1
-  Call -.->|enter dir| S2
+  subgraph S_Sub[" <b>Subtree DOX</b> · On Dir Entry "]
+    direction TB
+    S_Tree["<b>Scoped AGENTS.md</b><br/>• src/api/AGENTS.md<br/>• tests/AGENTS.md<br/>• <i>Local contracts & rules</i>"]:::subNode
+  end
+
+  LLM ==>|Always Injected| S_Root
+  LLM -.->|Demand: New Session / Policy / Paths| A_Core
+  LLM -.->|Demand: Decisions / Plans| A_Context
+  LLM -.->|Context: Working in Subtree| S_Sub
+
+  classDef main fill:#f1f5f9,stroke:#0284c7,stroke-width:2px,color:#0f172a;
+  classDef rootNode fill:#eff6ff,stroke:#2563eb,stroke-width:2px,color:#1e3a8a;
+  classDef agentNode fill:#f0fdf4,stroke:#16a34a,stroke-width:1.5px,color:#14532d;
+  classDef subNode fill:#faf5ff,stroke:#9333ea,stroke-width:1.5px,color:#581c87;
+  classDef default rx:6px,ry:6px;
 ```
 
 ## Quick start

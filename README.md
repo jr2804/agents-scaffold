@@ -1,7 +1,7 @@
 # agents-scaffold
 
 <p align="center">
-  <img src="./assets/readme/hero.svg" width="100%" alt="agents-scaffold — self-documenting AGENTS.md hierarchy. AGENTS.md at the root always injected, with demand-loaded files under .agents/ (ONBOARDING, POLICIES, FILES, HISTORY, MAINTENANCE, plans, history).">
+  <img src="./assets/readme/hero.svg" width="100%" alt="agents-scaffold — self-documenting AGENTS.md hierarchy. AGENTS.md at the root always injected, with demand-loaded files under .agents/ (ONBOARDING, POLICIES, FILES, TOOLS, HISTORY, MAINTENANCE, plans, history).">
 </p>
 
 > **AGENTS.md is for agents, not humans.** One sentence of project
@@ -9,7 +9,7 @@
 
 **agents-scaffold** ships a copy-paste convention for keeping
 `AGENTS.md` lean. The root file holds only the rules every LLM call
-needs; everything else lives in `.agents/` files (loaded on demand)
+needs; everything else lives in `.agents/` state files (loaded on demand)
 or subtree `AGENTS.md` files (loaded on directory entry).
 
 ## Problem
@@ -43,8 +43,8 @@ flowchart LR
 
   subgraph S_Agents[" <b>.agents/</b> · Demand-Loaded "]
     direction TB
-    A_Core["<b>Core Policies & Entry</b><br/>• ONBOARDING.md <i>(new session)</i><br/>• POLICIES.md <i>(always / standards)</i><br/>• FILES.md <i>(file & path constants)</i>"]:::agentNode
-    A_Context["<b>Context & Knowledge</b><br/>• HISTORY.md & history/ <i>(decisions)</i><br/>• MAINTENANCE.md <i>(keeping DOX lean)</i><br/>• plans/ <i>(active features, gitignored)</i>"]:::agentNode
+    A_Core["<b>Core Policies & Entry</b><br/>ONBOARDING <i>(new)</i> · POLICIES <i>(always)</i> · FILES <i>(paths)</i> · TOOLS <i>(tools)</i>"]:::agentNode
+    A_Context["<b>Context & Knowledge</b><br/>HISTORY & history/ <i>(decisions)</i> · MAINTENANCE <i>(upkeep)</i> · plans/ <i>(work)</i>"]:::agentNode
   end
 
   subgraph S_Sub[" <b>Subtree DOX</b> · On Dir Entry "]

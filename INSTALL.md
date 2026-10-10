@@ -51,6 +51,9 @@ Feed this file to your coding agent to set up the DOX hierarchy.
 
 ## Files to create
 
+The `.agents/*.md` files below are **state files** — demand-loaded project
+memory. Use this exact term for them.
+
 ### Root `AGENTS.md`
 
 Copy AGENTS.md from agents-scaffold. Fill sections 2–4:
@@ -86,6 +89,12 @@ Start empty. Add entries as decisions are made.
 ### `.agents/MAINTENANCE.md`
 
 Keep generic template. Only change update triggers if project has unique needs.
+
+### `.agents/TOOLS.md`
+
+Inventory of development-time tooling: CLIs, MCP servers, skills, runtimes,
+and project scripts. Each tool appears exactly once, with a short
+when-to-use note. Keep the tables current — this is not a historical log.
 
 ## Update mode (when files already exist)
 
@@ -126,8 +135,9 @@ first-time install. Do not bail out — the template may have changed.
 3. **Delete history entries** — move important ones to `.agents/HISTORY.md`
    with git refs. Routine history stays in git log.
 4. **Delete TODO lists** — use an issue tracker or beads.
-5. **Move non-essential rules →** `.agents/POLICIES.md` or subtree AGENTS.md.
-   Only inject what is needed on every LLM call.
+5. **Move non-essential rules →** `.agents/POLICIES.md` or subtree AGENTS.md;
+   tool inventories → `.agents/TOOLS.md`. Only inject what is needed on every
+   LLM call.
 6. **Move path/constant definitions →** `.agents/FILES.md`.
 7. **Add ⛔ No Patching section** at end of root AGENTS.md.
 

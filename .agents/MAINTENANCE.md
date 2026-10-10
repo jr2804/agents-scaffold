@@ -5,8 +5,8 @@ How to keep `.agents/` files current.
 ## Process
 
 1. When a rule changes, update the owning file — never another file.
-2. When adding a new `.agents/` file or directory, add it to the index table
-   in root `AGENTS.md`.
+2. When adding a new state file or directory under `.agents/`, add it to the
+   index table in root `AGENTS.md` and to **File update triggers** below.
 3. After any `.agents/` change, check the index for stale entries.
 
 ## Principles
@@ -25,5 +25,6 @@ How to keep `.agents/` files current.
 | `FILES.md` | Path constants, config keys, or naming conventions change |
 | `HISTORY.md` | Notable decision made or resolved |
 | `MAINTENANCE.md` | Maintenance procedures, triggers, or principles change |
+| `TOOLS.md` | Tools, MCP servers, skills, or CLIs added, removed, or changed |
 | `plans/` | New feature implementation starts |
 | `history/` | HISTORY.md overflow or completed plans archived |

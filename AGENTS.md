@@ -95,13 +95,18 @@ the DOX tree and replace this message with the actual index. Go deep and scan fi
 recursively to properly evaluate complexity and create nested DOX files where
 needed.
 
-## .agents/ files — demand-loaded, not always injected
+## State files — `.agents/`, demand-loaded, not always injected
+
+State files are the `.agents/*.md` files listed below — the project's current
+operating memory. They describe the contracts the project has now; never a
+changelog or logbook — git owns the past (`.agents/POLICIES.md`).
 
 | File                    | Load when                   | Purpose                                         |
 | ----------------------- | --------------------------- | ----------------------------------------------- |
 | `ONBOARDING.md`         | New session (first time)    | Project orientation, entry points               |
 | `POLICIES.md`           | Always                      | Boundaries, priorities, verification, checklist |
 | `FILES.md`              | Touching files or config    | Path constants, source-of-truth locations       |
+| `TOOLS.md`              | Using tools/MCP/skills      | Development tool inventory and usage guidance   |
 | `HISTORY.md`            | Background (past decisions) | Recorded decisions with git refs                |
 | `MAINTENANCE.md`        | Changing `.agents/`         | How to keep DOX files current                    |
 | `plans/`                | Working on a feature        | Implementation plans (gitignored)                |
@@ -109,12 +114,8 @@ needed.
 
 ## Tools & skills
 
-| Tool/Skill/MCP | When                    | Purpose                                           |
-| -------------- | ----------------------- | ------------------------------------------------- |
-| `codegraph`    | Navigating code         | Symbol search, call graphs, dependency maps       |
-| `repowise`     | Understanding code base | Architecture docs, health scores, change risk     |
-| `grepai`       | Finding code            | Semantic search by meaning, not text              |
-| `bd` / beads   | Issue tracking          | Task lifecycle, dependencies, session persistence |
+See state file `.agents/TOOLS.md` — it owns the inventory of CLIs, MCP
+servers, skills, and runtimes used during development.
 
 ## Project rules
 

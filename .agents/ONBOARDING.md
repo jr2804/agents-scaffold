@@ -27,14 +27,12 @@ One-line description. Full docs at `README.md` or `docs/`.
 ## Where to dig deeper
 
 - `docs/` — user-facing documentation
+- `.agents/TOOLS.md` — tools, MCP servers, skills, CLIs in use
 - `.agents/HISTORY.md` — past decisions and rationale
 - Source-tree AGENTS.md files — local contracts for each area
 
 ## Available tools
 
-If MCP/CLI tools are available for this workspace:
-
-- **codegraph** — symbol search, call graphs
-- **grepai** — find code by intent
-- **repowise** — architecture overview, risk, health
-- Any project-specific tools
+Development tools, MCP servers, skills, and CLIs are inventoried in the
+state file `.agents/TOOLS.md` — read it before assuming a tool, update it
+when tooling changes.

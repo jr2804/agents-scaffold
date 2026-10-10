@@ -15,6 +15,7 @@ How to keep `.agents/` files current.
   pointer, rationale, and size rules are in **DOX authoring**
   (`.agents/POLICIES.md`) — consult it on every DOX change.
 - **AGENTS.md is an index.** It points to `.agents/` files, does not replace them.
+- **No logbooks.** State files describe current contracts; git owns history — see `.agents/POLICIES.md`.
 
 ## File update triggers
 

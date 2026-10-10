@@ -86,6 +86,7 @@ in a skill or `docs/`, linked once.
 - Name descriptively with phase-number prefixes so file order matches
   implementation order, e.g. `01-sub-feature.md`, `02-next-sub-feature.md`.
 - NEVER commit plans to git. They are mutable working artifacts.
+- Once a plan is fully implemented, archive it as `.agents/history/<YYYY-MM-DD-plan-name>.md` (date = implementation date) and delete the plan directory — see **Documentation**.
 - Shipped docs (user-facing guides, API references) go in `docs/` and
   ARE committed.
 
@@ -93,9 +94,14 @@ in a skill or `docs/`, linked once.
 
 - When `.agents/HISTORY.md` grows too large, archive older entries to
   `.agents/history/`. Reference them from `.agents/HISTORY.md`.
-- Completed plans (`.agents/plans/<feature>/`) may be archived to
-  `.agents/history/<feature>/` for long-term reference.
+- Completed plans (`.agents/plans/<feature>/`) are durable once implemented:
+  consolidate them into `.agents/history/<YYYY-MM-DD-plan-name>.md`, remove the
+  `plans/<feature>/` directory, and reference the archive from `.agents/HISTORY.md`.
 - `.agents/history/` IS version-controlled (durable decision records).
+- AGENTS.md and state files describe the project's current contracts — never
+  append session notes, iteration logs, or changelogs; delete stale text
+  instead. `.agents/HISTORY.md` is the only permitted exception and holds
+  high-level decisions only.
 
 ## Size budget
 

@@ -1,7 +1,8 @@
 # AGENTS.md
 
-Agent instruction set. Not human docs — not injected on every LLM call if
-DOX-hierarchy child AGENTS.md covers the area being edited.
+Agent instruction set. The agent must follow DOX instructions across any
+edits. Not human docs — not injected on every LLM call if a DOX child
+AGENTS.md covers the area being edited.
 
 ## DOX — self-documenting AGENTS.md hierarchy
 

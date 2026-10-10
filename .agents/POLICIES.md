@@ -78,6 +78,8 @@ in a skill or `docs/`, linked once.
   `.agents/history/` for overflow archives). See **Implementation Plans**
   below for archiving completed plans.
 - **No TODO lists.** Use issue trackers or beads.
+- Prefer direct bullets with explicit names.
+- Trim obvious statements, repeated rules, and detail that no longer applies.
 
 ## Implementation Plans
 

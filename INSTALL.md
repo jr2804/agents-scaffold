@@ -41,9 +41,10 @@ Feed this file to your coding agent to set up the DOX hierarchy.
 >
 > **Conversely, if your project already has explicit inclusion rules**
 > for `.agents/` (e.g. `!.agents/` + `!.agents/**`, or a
-> project-specific pattern that already covers `.md` files), then no
-> gitignore change is needed at all — skip the whole block.
->
+> project-specific pattern that already covers `.md` files), the tracking
+> rules are already satisfied — but still add the `/.agents/plans/`
+> exclusion if implementation plans are not already ignored.
+> 
 > In all cases, the goal is the same: only DOX `.md` files and
 > `.agents/history/` are tracked; implementation plans and anything else
 > tools may drop in `.agents/` (configs, binaries, lock files) stay
@@ -96,6 +97,15 @@ Inventory of development-time tooling: CLIs, MCP servers, skills, runtimes,
 and project scripts. Each tool appears exactly once, with a short
 when-to-use note. Keep the tables current — this is not a historical log.
 
+## Choosing the mode
+
+- Fresh repo (no `AGENTS.md`) → **install**: follow Files to create.
+- Root `AGENTS.md` exists, `.agents/` partial or missing → **create the
+  missing state files**, then apply the update steps below to the files
+  that already exist.
+- `AGENTS.md` and the full state file set exist → **update** (below), even
+  if the files look current — the template evolves.
+
 ## Update mode (when files already exist)
 
 If `AGENTS.md` and `.agents/` already exist, this is an **update**, not a
@@ -104,18 +114,29 @@ first-time install. Do not bail out — the template may have changed.
 ### What to do
 
 1. **Fetch the latest `INSTALL.md`** from the same remote URL. Use it as the
-   source of truth for what the current template looks like.
-2. **Diff each file structurally** — do not just check existence. Compare
-   sections, rules, and entries against what is on disk.
-3. **Apply additions** — new sections in `POLICIES.md`, new files/dirs in
-   `.agents/`, new gitignore patterns.
+   source of truth for what the current template looks like. If the fetch
+   fails, use the version in context and say so in the report.
+2. **Diff each file structurally** against the known current set — root
+   `AGENTS.md` plus the state files `ONBOARDING.md`, `POLICIES.md`,
+   `FILES.md`, `TOOLS.md`, `HISTORY.md`, `MAINTENANCE.md`. Compare
+   sections, rules, and entries; do not just check existence.
+3. **Apply additions** — new sections in state files, missing files, new
+   gitignore patterns. `TOOLS.md` is the newest state file: if it is
+   absent, create it and move tool/MCP/skill inventories out of
+   `AGENTS.md` or `POLICIES.md` into it.
 4. **Apply rewordings** — if a rule's wording changed in the template (e.g.
    "No history" → "No history in AGENTS.md files"), update it.
 5. **Preserve project-specific customizations** — project rules in
    `AGENTS.md`, `FILES.md` entries, `HISTORY.md` entries, and any
    project-specific policies added under the correct sections in
    `POLICIES.md`. These are the user's content, not template content.
-6. **Report what changed** — list each file and whether it was added,
+6. **Refresh the root `AGENTS.md`** state files index table so every state
+   file on disk has a row, and delete anything a tool appended after the
+   ⛔ No Patching block (move legitimately useful rules to their owning
+   file first).
+7. **Run existing verification** — the project's markdown format/lint or
+   equivalent check — if one is configured; report gaps if none exists.
+8. **Report what changed** — list each file and whether it was added,
    updated, or left unchanged.
 
 ### What NOT to do
@@ -124,6 +145,8 @@ first-time install. Do not bail out — the template may have changed.
   FILES.md entries, HISTORY entries, custom policies).
 - Do NOT skip the update just because files exist — the template evolves.
 - Do NOT re-add content that was intentionally removed by the user.
+- Do NOT leave a partial state file set — every file listed in the root
+  `AGENTS.md` index must exist on disk.
 
 ## Migration instructions
 

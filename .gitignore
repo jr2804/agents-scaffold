@@ -40,3 +40,4 @@ tmp/
 temp/
 .mise.local.toml
 skills-lock.json
+package*.json

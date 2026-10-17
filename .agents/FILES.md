@@ -18,3 +18,8 @@ Kept compact — agents hallucinate less when they know where definitions live.
 | Enums | `src/project/enums.py` | StrEnum members for roles, tasks, ... |
 | CLI commands | `src/project/cli/` | Typer app entry points |
 | [add more] | | |
+
+## Subdirectory
+
+If this file grows past its size budget, split detail into
+`.agents/files/<name>.md` — every file there MUST be listed above.

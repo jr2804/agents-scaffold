@@ -35,4 +35,5 @@ One-line description. Full docs at `README.md` or `docs/`.
 
 Development tools, MCP servers, skills, and CLIs are inventoried in the
 state file `.agents/TOOLS.md` — read it before assuming a tool, update it
-when tooling changes.
+when tooling changes. If tooling grows large, detail moves to
+`.agents/tools/<name>.md` (each listed in TOOLS.md).

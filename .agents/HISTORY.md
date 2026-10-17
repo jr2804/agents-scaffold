@@ -15,6 +15,7 @@ Routine history lives in git; only record what is costly to rediscover.
 - High-level architectural decisions and breaking changes.
 - Dependency, tooling, and platform choices — including the alternative that lost.
 - False turns and rejected approaches, with the reason.
+- Completion of an implementation plan (link to its archive below).
 
 ## Do not record
 
@@ -29,4 +30,20 @@ Routine history lives in git; only record what is costly to rediscover.
   a pointer here.
 - Completed implementation plans are archived as single files at
   `.agents/history/<YYYY-MM-DD-plan-name>.md` and linked from the decision
-  entry they belong to.
+  entry they belong to. The trigger to archive is **plan completion**, not
+  file growth — see **Archive a plan** below.
+
+## Archive a plan
+
+When a plan's work is complete — the point to do this is when the
+implementation lands, not at the planning stage:
+
+1. Consolidate `.agents/plans/<YYYY-MM-DD>-<feature-name>/` into a single
+   file `.agents/history/<YYYY-MM-DD-plan-name>.md` (use the plan directory's
+   date prefix, e.g. `2026-07-14-api-migration.md`).
+2. Delete the plan directory.
+3. Add an entry to `.agents/HISTORY.md` referencing the archive and its
+   commit.
+
+If the date prefix on the plan directory is missing or wrong, use the date
+work started — record it in the archive filename exactly as-is.

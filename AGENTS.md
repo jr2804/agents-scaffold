@@ -103,16 +103,20 @@ State files are the `.agents/*.md` files listed below — the project's current
 operating memory. They describe the contracts the project has now; never a
 changelog or logbook — git owns the past (`.agents/POLICIES.md`).
 
-| File                    | Load when                   | Purpose                                         |
-| ----------------------- | --------------------------- | ----------------------------------------------- |
-| `ONBOARDING.md`         | New session (first time)    | Project orientation, entry points               |
-| `POLICIES.md`           | Always                      | Boundaries, priorities, verification, checklist |
-| `FILES.md`              | Touching files or config    | Path constants, source-of-truth locations       |
-| `TOOLS.md`              | Using tools/MCP/skills      | Development tool inventory and usage guidance   |
-| `HISTORY.md`            | Background (past decisions) | Recorded decisions with git refs                |
-| `MAINTENANCE.md`        | Changing `.agents/`         | How to keep DOX files current                    |
-| `plans/`                | Working on a feature        | Implementation plans (gitignored)                |
-| `history/`              | Background (overflow)       | Archived decisions and completed plans           |
+Each state file can have an optional matching subdirectory
+(`.agents/<topic>/`) that carries detail when the file grows; the file stays
+a lean index and every file in its subdirectory MUST be listed in the file.
+
+| File                    | Load when                   | Purpose                                         | Optional subdirectory |
+| ----------------------- | --------------------------- | ----------------------------------------------- | --------------------- |
+| `ONBOARDING.md`         | New session (first time)    | Project orientation, entry points               | —                     |
+| `POLICIES.md`           | Always                      | Boundaries, priorities, verification, checklist | `.agents/policies/`   |
+| `FILES.md`              | Touching files or config    | Path constants, source-of-truth locations       | `.agents/files/`      |
+| `TOOLS.md`              | Using tools/MCP/skills      | Development tool inventory and usage guidance   | `.agents/tools/`      |
+| `HISTORY.md`            | Background (past decisions) | Recorded decisions with git refs                | —                     |
+| `MAINTENANCE.md`        | Changing `.agents/`         | How to keep DOX files current                   | `.agents/maintenance/`|
+| `plans/`                | Working on a feature        | Implementation plans (gitignored)                | —                     |
+| `history/`              | Background (overflow)       | Archived decisions and completed plans          | —                     |
 
 ## Tools & skills
 

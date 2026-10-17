@@ -12,6 +12,11 @@ keep it current (see `.agents/MAINTENANCE.md`).
 - Tables describe current usage — delete rows when tools leave; this is not a
   historical log.
 
+## Subdirectory
+
+If this file grows past its size budget, split detail into
+`.agents/tools/<name>.md` — every file there MUST be listed above.
+
 ## CLI tools & runtimes
 
 | Tool | When | Purpose |

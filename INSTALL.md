@@ -97,6 +97,39 @@ Inventory of development-time tooling: CLIs, MCP servers, skills, runtimes,
 and project scripts. Each tool appears exactly once, with a short
 when-to-use note. Keep the tables current — this is not a historical log.
 
+## State file subdirectories
+
+Each state file has a matching optional subdirectory for growth. The file
+stays a lean index; the subdirectory carries detail. Only create one when
+the state file approaches its size budget (≤ 120 lines). Every file in a
+subdirectory **MUST** be listed in its state file.
+
+| State file | Optional subdirectory |
+| ---------- | -------------------- |
+| `FILES.md` | `.agents/files/` |
+| `POLICIES.md` | `.agents/policies/` |
+| `TOOLS.md` | `.agents/tools/` |
+| `MAINTENANCE.md` | `.agents/maintenance/` |
+
+`ONBOARDING.md` and `HISTORY.md` have no subdirectories: entry points stay
+a single file, and history growth goes to `.agents/history/`.
+
+## Implementation Plans
+
+When working on a feature, create a plan directory at
+`.agents/plans/<YYYY-MM-DD>-<feature-name>/` with numbered phase files:
+
+```text
+.agents/plans/2026-07-14-api-migration/
+  01-design.md
+  02-implementation.md
+  03-testing.md
+```
+
+Plans are gitignored (mutable working artifacts). When the work lands,
+archive to `.agents/history/<YYYY-MM-DD-plan-name>.md` and delete the plan
+directory — see `.agents/POLICIES.md` → Archive a plan.
+
 ## Choosing the mode
 
 - Fresh repo (no `AGENTS.md`) → **install**: follow Files to create.
@@ -163,6 +196,12 @@ first-time install. Do not bail out — the template may have changed.
    LLM call.
 6. **Move path/constant definitions →** `.agents/FILES.md`.
 7. **Add ⛔ No Patching section** at end of root AGENTS.md.
+8. **Normalize plan directories** — rename any `.agents/plans/<feature>/` to
+   `.agents/plans/<YYYY-MM-DD>-<feature-name>/` (use the date work started).
+9. **Check for state file subdirectories** — if any `.agents/<topic>/`
+   subdirectories exist, verify each file within is listed in its state file.
+10. **Check plan archive naming** — `.agents/history/` should contain single
+    files named `<YYYY-MM-DD-plan-name>.md`, not subdirectories.
 
 ### Check for tool patches
 

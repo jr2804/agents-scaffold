@@ -9,6 +9,7 @@ Routine history lives in git; only record what is costly to rediscover.
 | Date | Decision | Rationale | Git ref |
 | ---- | -------- | --------- | ------- |
 | 2026-11-25 | GitHub is canonical; releases run checks; MIT + notices | Codeberg restricts AI projects; preserve history and upstream attribution | `9a1c9ab`; [archive](./history/2026-11-25-github-migration.md) |
+| 2026-11-25 | Live `.agents/` stays; `templates/` holds copyable blanks | Live state was wrongly presented as install material; docs were too complex | `f89464e`; [archive](./history/2026-11-25-template-reset.md) |
 
 ## Record
 

@@ -8,7 +8,7 @@ Routine history lives in git; only record what is costly to rediscover.
 
 | Date | Decision | Rationale | Git ref |
 | ---- | -------- | --------- | ------- |
-| YYYY-MM-DD | [description] | [why] | [commit hash/tag] |
+| 2026-11-25 | GitHub is canonical; releases run checks; MIT + notices | Codeberg restricts AI projects; preserve history and upstream attribution | `9a1c9ab`; [archive](./history/2026-11-25-github-migration.md) |
 
 ## Record
 

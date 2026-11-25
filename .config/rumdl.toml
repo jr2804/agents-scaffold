@@ -58,10 +58,10 @@ flavor = "gfm"
 # [MD007]
 # indent = 4  # Unordered list indentation
 
-# [MD013]
+[MD013]
 # line-length = 100  # Line length
 # code-blocks = false  # Exclude code blocks from line length check
-# tables = false  # Exclude tables from line length check
+tables = true  # Check table rows against line-length
 # headings = true  # Include headings in line length check
 
 # [MD044]

@@ -18,8 +18,8 @@ Reviewed `agent0ai/dox` at
 
 | Project | Role | Decision |
 | ------- | ---- | -------- |
-| `agent0ai/dox` | Minimal copyable parent/child hierarchy | Keep the conceptual base; retain local state files, budgets, migration, and verification as explicit extensions |
-| `agentsmd/agents.md` | Portable Markdown convention and ecosystem | Keep the format and precedence guidance; do not adopt its website stack or present it as a scaffold/runtime |
+| `agent0ai/dox` | Copyable parent/child hierarchy | Keep the base; add state files, budgets, migration, checks |
+| `agentsmd/agents.md` | Markdown convention and ecosystem | Keep format and precedence; not a scaffold/runtime |
 | `anomalyco/knox` | Structured `.agents/` context and anti-bloat patterns | Keep attribution for the state-layer ideas |
 
 Rejected unsupported performance claims, universal auto-loading language, and

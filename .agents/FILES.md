@@ -21,7 +21,7 @@ Kept compact — agents hallucinate less when they know where definitions live.
 | Project license | `LICENSE` | MIT terms |
 | Upstream notices | `THIRD_PARTY_NOTICES.md` | DOX and AGENTS.md attribution |
 | Canonical repository URL | `README.md` | GitHub raw URL for `INSTALL.md` |
-| Markdown rules | `.config/rumdl.toml` | `global.disable`, `line-length`, `flavor` |
+| Markdown rules | `.config/rumdl.toml` | `global.disable`, `line-length`, `MD013.tables`, `flavor` |
 | Tool declarations | `.config/mise/config.toml` | `tools.bun`, `tools.rumdl` |
 | Project tasks | `.config/mise/conf.d/format.toml` | `check`, `check-md`, `format-md` |
 | Optional skills | `.config/mise/conf.d/skills.toml` | `add-skills` |

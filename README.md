@@ -5,7 +5,9 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/jr2804/agents-scaffold/releases"><img src="https://img.shields.io/github/v/release/jr2804/agents-scaffold?style=flat-square" alt="Latest release"></a>
+  <a href="https://github.com/jr2804/agents-scaffold/releases"><img
+    src="https://img.shields.io/github/v/release/jr2804/agents-scaffold?style=flat-square"
+    alt="Latest release"></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/License-MIT-14b8a6.svg?style=flat-square" alt="MIT license"></a>
   <a href="https://agents.md/"><img src="https://img.shields.io/badge/AGENTS.md-convention-0f172a?style=flat-square" alt="AGENTS.md convention"></a>
 </p>
@@ -55,5 +57,8 @@ supporting agents explicit read triggers; explicit user instructions win.
 MIT. Upstream notices are in [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md).
 
 <p align="center">
-  <a href="https://github.com/oil-oil/beautify-github-readme"><img src="./assets/readme/made-with-beautify.svg" width="480" alt="Footer credit for the README design skill."></a>
+  <a href="https://github.com/oil-oil/beautify-github-readme"><img
+    src="./assets/readme/made-with-beautify.svg"
+    width="480"
+    alt="Footer credit for the README design skill."></a>
 </p>

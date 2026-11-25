@@ -16,14 +16,23 @@ Feed this file to your coding agent to set up the DOX hierarchy.
 > !/.agents/*.md
 > !/.agents/history/
 > !/.agents/history/**
+> !/.agents/files/
+> !/.agents/files/**
+> !/.agents/policies/
+> !/.agents/policies/**
+> !/.agents/tools/
+> !/.agents/tools/**
+> !/.agents/maintenance/
+> !/.agents/maintenance/**
 >
 > # Implementation plans — mutable working artifacts, never committed
 > /.agents/plans/
 > ```
 >
-> The first two `!` lines un-ignore `.md` files directly in `.agents/` and
-> the `.agents/history/` subdirectory (durable decision records). The
-> `/.agents/plans/` line explicitly excludes implementation plans.
+> The inclusion lines un-ignore `.md` files directly in `.agents/`, the
+> `.agents/history/` subdirectory (durable decision records), and the optional
+> state-file subdirectories. The `/.agents/plans/` line explicitly excludes
+> implementation plans.
 >
 > **If your project's `.gitignore` already has a blanket ignore for this
 > directory** (e.g. `/.agents/`, `/.agents`, or just `.agents`), the
@@ -34,6 +43,14 @@ Feed this file to your coding agent to set up the DOX hierarchy.
 > !/.agents/*.md
 > !/.agents/history/
 > !/.agents/history/**
+> !/.agents/files/
+> !/.agents/files/**
+> !/.agents/policies/
+> !/.agents/policies/**
+> !/.agents/tools/
+> !/.agents/tools/**
+> !/.agents/maintenance/
+> !/.agents/maintenance/**
 >
 > # Implementation plans — mutable working artifacts, never committed
 > /.agents/plans/
@@ -45,24 +62,28 @@ Feed this file to your coding agent to set up the DOX hierarchy.
 > rules are already satisfied — but still add the `/.agents/plans/`
 > exclusion if implementation plans are not already ignored.
 > 
-> In all cases, the goal is the same: only DOX `.md` files and
-> `.agents/history/` are tracked; implementation plans and anything else
-> tools may drop in `.agents/` (configs, binaries, lock files) stay
-> ignored.
+> In all cases, the goal is the same: only DOX `.md` files, durable
+> `.agents/history/` records, and supported state-file subdirectories are
+> tracked; implementation plans and anything else tools may drop in
+> `.agents/` (configs, binaries, lock files) stay ignored.
 
 ## Files to create
 
-The `.agents/*.md` files below are **state files** — demand-loaded project
-memory. Use this exact term for them.
+The `.agents/*.md` files below are **state files** — project memory read when
+its stated trigger applies. Use this exact term for them.
 
 ### Root `AGENTS.md`
 
-Copy AGENTS.md from agents-scaffold. Fill sections 2–4:
+Copy `AGENTS.md` from agents-scaffold. Fill the one-sentence project description,
+**Project rules**, and **Child DOX Index**.
 
-**AGENTS.md §4 (Project rules):** 5-10 essential, frequently-broken rules that
-must be injected on every LLM call. Examples: path conventions, import rules,
-naming patterns, required config keys. Everything non-essential goes into
-`.agents/` files.
+**Project rules:** 5–10 essential, frequently-broken rules intended for the
+agent's working context. Examples: path conventions, import rules, naming
+patterns, required config keys. Everything non-essential goes into `.agents/`
+files or a scoped subtree `AGENTS.md`.
+
+Keep the ⛔ No Patching section final. Intentional, reviewed edits above the
+marker are allowed; autonomous injection after it is not.
 
 ### `.agents/ONBOARDING.md`
 
@@ -72,7 +93,8 @@ to tools (codegraph, grepai, repos, etc. if available).
 ### `.agents/POLICIES.md`
 
 Keep the generic boundaries/priorities/verification template. Add
-project-specific policies under the correct section.
+project-specific policies under the correct section. If the file approaches
+120 lines, move detail into `.agents/policies/` and index every file there.
 
 ### `.agents/FILES.md`
 
@@ -97,12 +119,17 @@ Inventory of development-time tooling: CLIs, MCP servers, skills, runtimes,
 and project scripts. Each tool appears exactly once, with a short
 when-to-use note. Keep the tables current — this is not a historical log.
 
+### `LICENSE` and `THIRD_PARTY_NOTICES.md`
+
+This scaffold is MIT-licensed. Keep both files with copied scaffold content so
+the project license and upstream DOX attribution remain intact.
+
 ## State file subdirectories
 
-Each state file has a matching optional subdirectory for growth. The file
-stays a lean index; the subdirectory carries detail. Only create one when
-the state file approaches its size budget (≤ 120 lines). Every file in a
-subdirectory **MUST** be listed in its state file.
+Each of the four growing state files has a matching optional subdirectory for
+growth. The file stays a lean index; the subdirectory carries detail. Only
+create one when the state file approaches its size budget (≤ 120 lines). Every
+file in a subdirectory **MUST** be listed in its state file.
 
 | State file | Optional subdirectory |
 | ---------- | -------------------- |
@@ -128,7 +155,7 @@ When working on a feature, create a plan directory at
 
 Plans are gitignored (mutable working artifacts). When the work lands,
 archive to `.agents/history/<YYYY-MM-DD-plan-name>.md` and delete the plan
-directory — see `.agents/POLICIES.md` → Archive a plan.
+directory — see `.agents/POLICIES.md` → `.agents/policies/dox.md`.
 
 ## Choosing the mode
 
@@ -146,31 +173,30 @@ first-time install. Do not bail out — the template may have changed.
 
 ### What to do
 
-1. **Fetch the latest `INSTALL.md`** from the same remote URL. Use it as the
-   source of truth for what the current template looks like. If the fetch
-   fails, use the version in context and say so in the report.
-2. **Diff each file structurally** against the known current set — root
-   `AGENTS.md` plus the state files `ONBOARDING.md`, `POLICIES.md`,
-   `FILES.md`, `TOOLS.md`, `HISTORY.md`, `MAINTENANCE.md`. Compare
-   sections, rules, and entries; do not just check existence.
-3. **Apply additions** — new sections in state files, missing files, new
-   gitignore patterns. `TOOLS.md` is the newest state file: if it is
-   absent, create it and move tool/MCP/skill inventories out of
-   `AGENTS.md` or `POLICIES.md` into it.
-4. **Apply rewordings** — if a rule's wording changed in the template (e.g.
-   "No history" → "No history in AGENTS.md files"), update it.
-5. **Preserve project-specific customizations** — project rules in
-   `AGENTS.md`, `FILES.md` entries, `HISTORY.md` entries, and any
-   project-specific policies added under the correct sections in
-   `POLICIES.md`. These are the user's content, not template content.
-6. **Refresh the root `AGENTS.md`** state files index table so every state
-   file on disk has a row, and delete anything a tool appended after the
-   ⛔ No Patching block (move legitimately useful rules to their owning
-   file first).
-7. **Run existing verification** — the project's markdown format/lint or
-   equivalent check — if one is configured; report gaps if none exists.
-8. **Report what changed** — list each file and whether it was added,
-   updated, or left unchanged.
+1. **Choose an immutable source revision** — a release tag or commit SHA from
+   <https://github.com/jr2804/agents-scaffold>. Use `main` only when the user
+   explicitly accepts mutable upstream content.
+2. **Fetch the canonical file set** from that revision: `INSTALL.md`, root
+   `AGENTS.md`, every `.agents/**/*.md` file, every subtree `AGENTS.md`, and the
+   license notices. If any required fetch fails, stop and report the failure;
+   do not silently fall back to a stale in-context copy.
+3. **Diff each file structurally** against the fetched source. Compare sections,
+   rules, indexes, and entries; do not just check existence.
+4. **Apply additions** — new sections, missing state files or indexed detail
+   files, missing subtree contracts, and new gitignore patterns.
+5. **Apply rewordings** — if a rule's wording changed in the template, update it
+   without changing project-specific meaning.
+6. **Preserve project-specific customizations** — project rules, `FILES.md`
+   entries, `HISTORY.md` entries, and project-specific policies. These are the
+   user's content, not template content.
+7. **Refresh both root indexes** — the Child DOX Index lists child `AGENTS.md`
+   scopes; the state-file table lists `.agents/` files and their read triggers.
+   Verify every indexed file exists and remove anything injected after the
+   ⛔ No Patching marker.
+8. **Run existing verification** — use the project's configured non-mutating
+   check when available; report gaps if none exists.
+9. **Report what changed** — list each file and whether it was added, updated,
+   or left unchanged, plus the source revision used.
 
 ### What NOT to do
 
@@ -179,7 +205,8 @@ first-time install. Do not bail out — the template may have changed.
 - Do NOT skip the update just because files exist — the template evolves.
 - Do NOT re-add content that was intentionally removed by the user.
 - Do NOT leave a partial state file set — every file listed in the root
-  `AGENTS.md` index must exist on disk.
+  `AGENTS.md` state-file table must exist on disk, and every detail file must
+  be indexed by its owning state file.
 
 ## Migration instructions
 
@@ -192,10 +219,11 @@ first-time install. Do not bail out — the template may have changed.
    with git refs. Routine history stays in git log.
 4. **Delete TODO lists** — use an issue tracker or beads.
 5. **Move non-essential rules →** `.agents/POLICIES.md` or subtree AGENTS.md;
-   tool inventories → `.agents/TOOLS.md`. Only inject what is needed on every
-   LLM call.
+   tool inventories → `.agents/TOOLS.md`. Keep root instructions focused on
+   rules needed for general work in the repository.
 6. **Move path/constant definitions →** `.agents/FILES.md`.
-7. **Add ⛔ No Patching section** at end of root AGENTS.md.
+7. **Add ⛔ No Patching section** at end of root AGENTS.md. It blocks autonomous
+   injection after the marker, not intentional reviewed edits above it.
 8. **Normalize plan directories** — rename any `.agents/plans/<feature>/` to
    `.agents/plans/<YYYY-MM-DD>-<feature-name>/` (use the date work started).
 9. **Check for state file subdirectories** — if any `.agents/<topic>/`
@@ -220,4 +248,5 @@ src/api/AGENTS.md     → API-specific rules
 tests/AGENTS.md       → Testing conventions
 ```
 
-These are demand-loaded on entry and keep root AGENTS.md lean.
+These are read when working in the subtree and keep root AGENTS.md lean.
+Discovery and injection behavior depends on the AGENTS.md client.

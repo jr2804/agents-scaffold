@@ -31,6 +31,13 @@ How to keep `.agents/` files current.
 | `TOOLS.md` | Tools, MCP servers, skills, or CLIs added, removed, or changed |
 | `HISTORY.md` | Notable decision made or resolved |
 | `MAINTENANCE.md` | Maintenance procedures, triggers, or principles change |
+| `AGENTS.md` | Project-wide rules, preferences, or Child DOX Index change |
+| `README.md` | Positioning, examples, canonical URLs, or figures change |
+| `INSTALL.md` | Install/update contract or migration guidance changes |
+| `LICENSE`, `THIRD_PARTY_NOTICES.md` | Licensing or upstream attribution changes |
+| `.github/` | Release behavior, permissions, or GitHub automation changes |
+| `.config/` | Tools, tasks, or Markdown rules change |
+| `assets/` | README figure structure, accessibility, or palette changes |
 | `plans/` | New feature implementation starts |
 | `history/` | HISTORY.md overflow or completed plans archived |
 | `files/`, `policies/`, `tools/`, `maintenance/` | State files split into subdirectories |

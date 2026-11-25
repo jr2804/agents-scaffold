@@ -38,6 +38,7 @@ Thumbs.db
 # Temp
 tmp/
 temp/
+.rumdl_cache/
 .mise.local.toml
 skills-lock.json
 package*.json

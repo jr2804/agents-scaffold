@@ -1,8 +1,8 @@
 # AGENTS.md — TOOLS
 
 State file: inventory of tools used in development — CLIs, MCP servers,
-skills, runtimes, and project scripts. Demand-loaded like all state files;
-keep it current (see `.agents/MAINTENANCE.md`).
+skills, runtimes, and project scripts. Read it when relevant, like all state
+files; keep it current (see `.agents/MAINTENANCE.md`).
 
 ## Rules
 
@@ -21,22 +21,34 @@ If this file grows past its size budget, split detail into
 
 | Tool | When | Purpose |
 | ---- | ---- | ------- |
-| [tool] | [when to reach for it] | [what it does] |
+| `mise` | Local setup and repeatable tasks | Declares tools and runs check/format/skill tasks |
+| `bun` | Optional skill installation | Runs the existing `skills` CLI through `bun x` |
+| `rumdl` | Markdown changes | Lints and formats GFM with `.config/rumdl.toml` |
+| `git` | Every change | Version control, history, tags, and remotes |
+| `gh` | GitHub hosting and releases | Repository, workflow, release, and remote verification |
+| Python 3 | SVG changes | Standard-library XML validation for README figures |
 
 ## MCP servers
 
-| Server | When | Purpose |
-| ------ | ---- | ------- |
-| [server] | [when to reach for it] | [what it does] |
+None configured.
 
 ## Skills
 
 | Skill | When | Purpose |
 | ----- | ---- | ------- |
-| [skill] | [when to reach for it] | [what it does] |
+| `beautify-github-readme` | README presentation | Badge and figure conventions |
+| `visual-explainer` | Explanatory visuals | Diagram structure and visual hierarchy |
+| `effective-html` | HTML previews | Self-contained explanatory pages |
+| `mermaid-diagrams` | Mermaid changes | Diagram syntax and styling |
+| `svg-precision-skill` | SVG changes | Precise vector layout and text fitting |
+
+The exact install sources live in `.config/mise/conf.d/skills.toml`.
 
 ## Project scripts & tasks
 
 | Command | Purpose |
 | ------- | ------- |
-| [command] | [what it does] |
+| `mise run check` | Aggregate non-mutating Markdown, SVG, and diff verification |
+| `mise run check-md` | Non-mutating Markdown lint and format verification |
+| `mise run format-md` | Apply Markdown formatting fixes |
+| `mise run add-skills` | Install the optional skill set |

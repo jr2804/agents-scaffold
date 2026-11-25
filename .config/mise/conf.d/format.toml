@@ -1,3 +1,22 @@
+[tasks.check]
+description = "Run all non-mutating documentation checks"
+depends = ["check-md"]
+run = """
+python3 -c '
+from pathlib import Path
+import xml.etree.ElementTree as ET
+files = sorted(Path("assets/readme").glob("*.svg"))
+for path in files:
+    ET.parse(path)
+print(f"Parsed {len(files)} SVG files")
+'
+git diff --check
+"""
+
+[tasks.check-md]
+description = "Check Markdown lint and formatting without changing files"
+run = "rumdl check --config .config/rumdl.toml .agents/ ./ && rumdl fmt --check --config .config/rumdl.toml .agents/ ./"
+
 [tasks.format-md]
 description = "Lint and reformat Markdown files with rumdl"
 run = "rumdl fmt --config .config/rumdl.toml .agents/ ./"

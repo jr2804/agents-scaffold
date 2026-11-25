@@ -6,5 +6,4 @@ run = [
     "bun x skills add plannotator/effective-html -a universal -y",
     "bun x skills add hoodini/ai-agents-skills -s mermaid-diagrams -a universal -y",
     "bun x skills add dkyazzentwatwa/chatgpt-skills -s svg-precision-skill -a universal -y",
-    "bun x skills add https://codeberg.org/jr2804/copier-uv-plus.git -s mermaid-diagrams -a universal -y",
 ]

@@ -1,49 +1,95 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="368" viewBox="0 0 1200 368" role="img" aria-labelledby="hero-title hero-desc">
-  <title id="hero-title">agents-scaffold — self-documenting AGENTS.md hierarchy</title>
-  <desc id="hero-desc">Project name and one-line value on the left; on the right, a card showing the DOX file tree: AGENTS.md at the root and demand-loaded files under .agents/.</desc>
+  <title id="hero-title">agents-scaffold — three tiers of agent context</title>
+  <desc id="hero-desc">The root AGENTS.md provides project-wide context. Six .agents state files are read when relevant, and subtree AGENTS.md files provide scoped contracts for local work.</desc>
 
-  <!-- Canvas -->
-  <rect width="1200" height="368" rx="20" fill="#0F172A"/>
+  <defs>
+    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#111C33"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#14B8A6"/>
+      <stop offset="1" stop-color="#38BDF8"/>
+    </linearGradient>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#94A3B8" opacity="0.10"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#64748B"/>
+    </marker>
+  </defs>
 
-  <!-- Left: title block -->
-  <g transform="translate(56 40)">
-    <!-- Eyebrow with accent bar (project-native motif cue) -->
+  <rect width="1200" height="368" rx="22" fill="url(#canvas)"/>
+  <rect width="1200" height="368" rx="22" fill="url(#dots)"/>
+  <rect x="0" y="0" width="1200" height="5" rx="2.5" fill="url(#accent)"/>
+
+  <!-- Identity and promise -->
+  <g transform="translate(56 34)">
     <rect x="0" y="0" width="3" height="22" fill="#14B8A6"/>
-    <text x="14" y="17" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" letter-spacing="3" fill="#14B8A6">AGENT CONVENTION · DOX</text>
+    <text x="15" y="17" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" letter-spacing="2.6" fill="#5EEAD4">DOX · AGENT INSTRUCTIONS</text>
 
-    <!-- Project name -->
-    <text x="0" y="98" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="68" font-weight="700" fill="#F1F5F9">agents-scaffold</text>
+    <text x="0" y="92" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="60" font-weight="700" letter-spacing="-2" fill="#F8FAFC">agents-scaffold</text>
+    <text x="0" y="132" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="24" font-weight="600" fill="#CBD5E1">Keep agent context lean.</text>
+    <text x="0" y="163" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18" fill="#94A3B8">Read the right contract at the right time.</text>
 
-    <!-- Subtitle -->
-    <text x="0" y="138" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="22" fill="#94A3B8">Self-documenting AGENTS.md hierarchy for any repository.</text>
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" letter-spacing="1">
+      <rect x="0" y="198" width="94" height="30" rx="15" fill="#14B8A6" fill-opacity="0.12" stroke="#14B8A6"/>
+      <text x="47" y="218" text-anchor="middle" fill="#5EEAD4">ALWAYS</text>
+      <rect x="104" y="198" width="118" height="30" rx="15" fill="#38BDF8" fill-opacity="0.10" stroke="#38BDF8"/>
+      <text x="163" y="218" text-anchor="middle" fill="#7DD3FC">ON DEMAND</text>
+      <rect x="232" y="198" width="106" height="30" rx="15" fill="#C084FC" fill-opacity="0.10" stroke="#C084FC"/>
+      <text x="285" y="218" text-anchor="middle" fill="#D8B4FE">ON ENTRY</text>
+    </g>
 
-    <!-- Metadata line -->
-    <text x="0" y="186" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" fill="#64748B">lean root · 6 demand-loaded files · subtree contracts</text>
+    <text x="0" y="264" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" letter-spacing="1.4" fill="#64748B">ROOT + STATE + SUBTREE</text>
+    <text x="0" y="298" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14" fill="#94A3B8">No tree views · no logbooks · no TODO lists</text>
   </g>
 
-  <!-- Right: DOX hierarchy card -->
-  <g transform="translate(740 46)">
-    <!-- Card frame -->
-    <rect x="0" y="0" width="404" height="276" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+  <!-- Context routing -->
+  <g transform="translate(716 36)">
+    <rect x="0" y="0" width="428" height="302" rx="16" fill="#1E293B" fill-opacity="0.94" stroke="#334155" stroke-width="1.5"/>
+    <text x="22" y="28" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" letter-spacing="2" fill="#94A3B8">THREE CONTEXT TIERS</text>
+    <line x1="22" y1="40" x2="406" y2="40" stroke="#334155"/>
 
-    <!-- Card header -->
-    <text x="20" y="30" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" letter-spacing="2" fill="#64748B">DOX HIERARCHY</text>
-    <line x1="20" y1="42" x2="384" y2="42" stroke="#334155" stroke-width="1"/>
+    <!-- Root contract -->
+    <rect x="20" y="50" width="388" height="50" rx="10" fill="#0F172A" stroke="#14B8A6" stroke-width="1.5"/>
+    <path d="M36 65h10l4 4v16H36z M46 65v5h5" fill="none" stroke="#5EEAD4" stroke-width="1.5" stroke-linejoin="round"/>
+    <text x="68" y="81" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="600" fill="#F1F5F9">AGENTS.md</text>
+    <rect x="316" y="64" width="74" height="22" rx="11" fill="#14B8A6" fill-opacity="0.12" stroke="#14B8A6"/>
+    <text x="353" y="79" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" letter-spacing="1" fill="#5EEAD4">ALWAYS</text>
 
-    <!-- Tree content -->
-    <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16" fill="#F1F5F9">
-      <text x="20" y="74">AGENTS.md</text>
-      <rect x="240" y="60" width="74" height="22" rx="11" fill="#14B8A6" fill-opacity="0.12" stroke="#14B8A6" stroke-width="1"/>
-      <text x="277" y="76" text-anchor="middle" font-size="12" fill="#14B8A6" letter-spacing="1">ALWAYS</text>
+    <!-- Routing connectors -->
+    <path d="M214 100V116M112 116H316V128M112 116V128M316 116V128" fill="none" stroke="#64748B" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <circle cx="214" cy="116" r="3" fill="#94A3B8"/>
 
-      <text x="20" y="104" fill="#94A3B8">.agents/</text>
-
-      <text x="20" y="130">├─ ONBOARDING.md</text>
-      <text x="20" y="154">├─ POLICIES.md</text>
-      <text x="20" y="178">├─ FILES.md</text>
-      <text x="20" y="202">├─ TOOLS.md</text>
-      <text x="20" y="226">├─ HISTORY.md</text>
-      <text x="20" y="250">└─ MAINTENANCE.md</text>
+    <!-- State files -->
+    <rect x="20" y="130" width="184" height="148" rx="10" fill="#0F172A" stroke="#334155"/>
+    <rect x="20" y="130" width="184" height="3" rx="1.5" fill="#38BDF8"/>
+    <text x="36" y="158" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16" font-weight="600" fill="#E2E8F0">.agents/</text>
+    <rect x="112" y="142" width="76" height="22" rx="11" fill="#38BDF8" fill-opacity="0.10" stroke="#38BDF8"/>
+    <text x="150" y="157" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing="0.6" fill="#7DD3FC">ON DEMAND</text>
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" fill="#94A3B8">
+      <text x="36" y="184">ONBOARDING</text>
+      <text x="36" y="201">POLICIES</text>
+      <text x="36" y="218">FILES</text>
+      <text x="36" y="235">TOOLS</text>
+      <text x="36" y="252">HISTORY</text>
+      <text x="36" y="269">MAINTENANCE</text>
     </g>
+
+    <!-- Scoped subtree contracts -->
+    <rect x="220" y="130" width="188" height="148" rx="10" fill="#0F172A" stroke="#334155"/>
+    <rect x="220" y="130" width="188" height="3" rx="1.5" fill="#C084FC"/>
+    <text x="236" y="158" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16" font-weight="600" fill="#E2E8F0">Subtree</text>
+    <rect x="320" y="142" width="72" height="22" rx="11" fill="#C084FC" fill-opacity="0.10" stroke="#C084FC"/>
+    <text x="356" y="157" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing="0.6" fill="#D8B4FE">ON ENTRY</text>
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">
+      <text x="236" y="188" fill="#94A3B8">src/api/</text>
+      <text x="248" y="208" fill="#E2E8F0">AGENTS.md</text>
+      <text x="236" y="232" fill="#94A3B8">tests/</text>
+      <text x="248" y="252" fill="#E2E8F0">AGENTS.md</text>
+    </g>
+
+    <text x="214" y="294" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" fill="#94A3B8">A convention for supporting agents — not a runtime loader.</text>
   </g>
 </svg>

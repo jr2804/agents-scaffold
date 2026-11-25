@@ -1,115 +1,128 @@
 # agents-scaffold
 
 <p align="center">
-  <img src="./assets/readme/hero.svg" width="100%" alt="agents-scaffold — self-documenting AGENTS.md hierarchy. AGENTS.md at the root always injected, with demand-loaded files under .agents/ (ONBOARDING, POLICIES, FILES, TOOLS, HISTORY, MAINTENANCE, plans, history).">
+  <img src="./assets/readme/hero.svg" width="100%" alt="Three tiers of agent context: a root AGENTS.md, conditionally read .agents state files, and scoped subtree contracts.">
 </p>
 
-> **AGENTS.md is for agents, not humans.** One sentence of project
-> description, then rules. Everything else is demand-loaded.
+<p align="center">
+  <a href="https://github.com/jr2804/agents-scaffold/releases"><img src="https://img.shields.io/github/v/release/jr2804/agents-scaffold?style=flat-square" alt="Latest release"></a>
+  <a href="./LICENSE"><img src="https://img.shields.io/badge/License-MIT-14b8a6.svg?style=flat-square" alt="MIT license"></a>
+  <a href="https://agents.md/"><img src="https://img.shields.io/badge/AGENTS.md-convention-0f172a?style=flat-square" alt="AGENTS.md convention"></a>
+</p>
 
-**agents-scaffold** ships a copy-paste convention for keeping
-`AGENTS.md` lean. The root file holds only the rules every LLM call
-needs; everything else lives in `.agents/` state files (loaded on demand)
-or subtree `AGENTS.md` files (loaded on directory entry).
+> **AGENTS.md is for agents, not humans.** Keep the root focused on the rules
+> that matter; move detail into files the agent reads only when relevant.
 
-## Problem
+**agents-scaffold** is a copy-paste convention for keeping coding-agent context
+lean, scoped, and maintainable. It combines a small root contract, conditionally
+read `.agents/` state files, and optional subtree `AGENTS.md` files.
 
-`AGENTS.md` is injected on every LLM call. Most files are bloated with
-tree views, history entries, TODO lists, and verbose descriptions — all
-things the agent can discover on demand. Every redundant byte dilutes
-the signal-to-noise ratio of every call.
+It is **not a runtime, parser, or universal loader**. AGENTS.md clients differ
+in how they discover and inject files. This scaffold gives supporting agents
+explicit read triggers and update rules; explicit user instructions still take
+precedence.
 
-## Mechanism
+## Why
 
-```mermaid
-%%{init: {
-  'theme': 'base',
-  'themeVariables': {
-    'primaryColor': '#eff6ff',
-    'primaryTextColor': '#1e293b',
-    'primaryBorderColor': '#3b82f6',
-    'lineColor': '#64748b',
-    'fontSize': '13px',
-    'fontFamily': 'Inter, system-ui, -apple-system, sans-serif'
-  }
-}}%%
-flowchart LR
-  LLM(["🤖 <b>LLM Call</b><br/><i>Prompt Context</i>"]):::main
+Most `AGENTS.md` files accumulate tree views, history, TODO lists, and verbose
+explanations. Those bytes dilute the signal on every request and drift quickly.
 
-  subgraph S_Root[" <b>Root AGENTS.md</b> · Always Injected "]
-    direction TB
-    R["<b>Root Rail</b><br/>• 1-sentence description<br/>• 5–10 essential rules<br/>• ⛔ No-patching block"]:::rootNode
-  end
+DOX separates stable contracts from discoverable detail:
 
-  subgraph S_Agents[" <b>.agents/</b> · Demand-Loaded "]
-    direction TB
-    A_Core["<b>Core Policies & Entry</b><br/>ONBOARDING <i>(new)</i> · POLICIES <i>(always)</i> · FILES <i>(paths)</i> · TOOLS <i>(tools)</i>"]:::agentNode
-    A_Context["<b>Context & Knowledge</b><br/>HISTORY & history/ <i>(decisions)</i> · MAINTENANCE <i>(upkeep)</i> · plans/ <i>(work)</i>"]:::agentNode
-  end
+| Tier | Read when | Owns |
+| ---- | --------- | ---- |
+| Root `AGENTS.md` | Starting work in the repository | One-sentence description, essential rules, indexes, patch protection |
+| `.agents/*.md` | The stated trigger applies | Onboarding, policies, paths, tools, decisions, maintenance |
+| Subtree `AGENTS.md` | Working inside that subtree | Local contracts that need their own scope |
 
-  subgraph S_Sub[" <b>Subtree DOX</b> · On Dir Entry "]
-    direction TB
-    S_Tree["<b>Scoped AGENTS.md</b><br/>• src/api/AGENTS.md<br/>• tests/AGENTS.md<br/>• <i>Local contracts & rules</i>"]:::subNode
-  end
-
-  LLM ==>|Always Injected| S_Root
-  LLM -.->|Demand: New Session / Policy / Paths| A_Core
-  LLM -.->|Demand: Decisions / Plans| A_Context
-  LLM -.->|Context: Working in Subtree| S_Sub
-
-  classDef main fill:#f1f5f9,stroke:#0284c7,stroke-width:2px,color:#0f172a;
-  classDef rootNode fill:#eff6ff,stroke:#2563eb,stroke-width:2px,color:#1e3a8a;
-  classDef agentNode fill:#f0fdf4,stroke:#16a34a,stroke-width:1.5px,color:#14532d;
-  classDef subNode fill:#faf5ff,stroke:#9333ea,stroke-width:1.5px,color:#581c87;
-  classDef default rx:6px,ry:6px;
-```
+The convention also sets size budgets, keeps implementation plans out of Git,
+and archives completed plans as durable decisions.
 
 ## Quick start
 
-### Manual Integration
+### Manual integration
 
-1. Copy `AGENTS.md`, `.agents/`, and `INSTALL.md` into any repository.
-2. Fill `AGENTS.md` §2–4: one-sentence description, 5–10 always-on rules, child DOX index.
-3. Feed `INSTALL.md` to your agent — it performs the full migration.
+1. Copy `AGENTS.md`, `.agents/`, `INSTALL.md`, `LICENSE`, and `THIRD_PARTY_NOTICES.md` into your repository.
+2. Fill the one-sentence description, **Project rules**, and **Child DOX Index** in `AGENTS.md`.
+3. Feed `INSTALL.md` to your coding agent for the full migration and verification pass.
 
-See [`INSTALL.md`](./INSTALL.md) for the complete migration checklist.
+See [`INSTALL.md`](./INSTALL.md) for fresh-install, partial-install, and update modes.
 
-### Agent Setup
+### Agent setup
 
-Pipe `INSTALL.md` straight from this repo into your coding agent and let it perform the migration autonomously:
+Pipe `INSTALL.md` from GitHub into your coding agent:
 
 ```bash
-# macOS / Linux
-curl -fsSL https://codeberg.org/jr2804/agents-scaffold/raw/branch/main/INSTALL.md | <agent-cli>
-
-# Windows (PowerShell)
-irm https://codeberg.org/jr2804/agents-scaffold/raw/branch/main/INSTALL.md | <agent-cli>
+# macOS / Linux — pin SCAFFOLD_REF to a release tag or commit for reproducibility
+SCAFFOLD_REF=main
+curl -fsSL "https://raw.githubusercontent.com/jr2804/agents-scaffold/${SCAFFOLD_REF}/INSTALL.md" | <agent-cli>
 ```
 
-Adapt `<agent-cli>` to your tool's prompt-from-stdin entry point (e.g. Claude Code, opencode, aider, fabric).
+```powershell
+# Windows (PowerShell)
+$SCAFFOLD_REF = "main"
+irm "https://raw.githubusercontent.com/jr2804/agents-scaffold/$SCAFFOLD_REF/INSTALL.md" | <agent-cli>
+```
 
-Or paste this single instruction into any agent:
+Adapt `<agent-cli>` to your tool's prompt-from-stdin entry point. You can also
+paste this instruction into an agent:
 
 ```text
-Please install or update the framework given in https://codeberg.org/jr2804/agents-scaffold/raw/branch/main/INSTALL.md
+Install or update the agents-scaffold convention from
+https://raw.githubusercontent.com/jr2804/agents-scaffold/main/INSTALL.md
+Use an immutable release tag or commit when reproducibility matters, and stop
+with a clear report if the source cannot be fetched.
 ```
 
 ## Principles
 
-| Principle                           | Why it matters                                                            |
-| ----------------------------------- | ------------------------------------------------------------------------- |
-| AGENTS.md is for agents, not humans | Max signal density on every call                                          |
-| No tree views                       | Generate on demand: `rg --files \| tree-cli --fromfile`                   |
-| No history                          | Git log has it; only record decisions costly to rediscover                |
-| No TODO lists                       | Use an issue tracker or `beads`                                           |
-| DOX hierarchy                       | Subtree AGENTS.md files own local contracts; root stays lean              |
-| ⛔ No Patching                      | Content appended after the blocker section is invalid and must be removed |
+| Principle | Why it matters |
+| --------- | -------------- |
+| AGENTS.md is for agents, not humans | Maximize signal density in repository instructions |
+| No tree views | Generate them on demand |
+| No routine history | Git owns the past; keep only decisions costly to rediscover |
+| No TODO lists | Use an issue tracker or `beads` |
+| One canonical home per rule | Reference detail instead of restating it |
+| Scoped subtree contracts | Keep local rules near the code they govern |
+| ⛔ No Patching | Prevent autonomous injection after the final marker |
 
-## Credits
+## Relationship to related projects
 
-- Base convention: [dox](https://github.com/agent0ai/dox) — self-documenting AGENTS.md hierarchy.
-- Extended with structured `.agents/` files and anti-bloat patterns from [knox](https://github.com/anomalyco/knox).
+Reviewed on 2026-11-25 against DOX at
+[`765ae4a`](https://github.com/agent0ai/dox/commit/765ae4ac02cc884eefcd41a3d0f71941721adb89)
+and AGENTS.md at
+[`d001185`](https://github.com/agentsmd/agents.md/commit/d001185d792eb6402a58e4cbef1c228b309ec25d).
+
+| Project | Role | How this scaffold relates |
+| ------- | ---- | ------------------------- |
+| [agentsmd/agents.md](https://github.com/agentsmd/agents.md) | Portable, open Markdown convention and ecosystem | Provides the baseline format; it is not a scaffold, schema, parser, or installer |
+| [agent0ai/dox](https://github.com/agent0ai/dox) | Tiny parent/child instruction hierarchy | Conceptual ancestor; this project adds state files, budgets, migration, tooling, and patch protection |
+| [anomalyco/knox](https://github.com/anomalyco/knox) | Structured `.agents/` context and anti-bloat patterns | Source of the state-layer and maintenance ideas |
+
+This project is an intentional extension of DOX, not an outdated copy. Its
+`.agents/` layout and numeric budgets are local conventions, not requirements
+of the AGENTS.md format.
+
+## Development
+
+```bash
+mise install
+mise run check
+mise run format-md
+```
+
+`check` is non-mutating and runs Markdown lint/format checks plus SVG XML
+validation. GitHub Releases run the same check before tagging.
+
+## Credits and license
+
+- Base convention: [dox](https://github.com/agent0ai/dox) by Agent Zero.
+- Structured state and anti-bloat patterns: [knox](https://github.com/anomalyco/knox).
+- Portable format and precedence guidance: [AGENTS.md](https://github.com/agentsmd/agents.md).
+
+Licensed under [MIT](./LICENSE). Upstream attributions and notices are preserved
+in [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md).
 
 <p align="center">
-  <a href="https://github.com/oil-oil/beautify-github-readme"><img src="./assets/readme/made-with-beautify.svg" width="300" alt="README made with beautify-github-readme"></a>
+  <a href="https://github.com/oil-oil/beautify-github-readme"><img src="./assets/readme/made-with-beautify.svg" width="480" alt="Footer credit for the README design skill."></a>
 </p>

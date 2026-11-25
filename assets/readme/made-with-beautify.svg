@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="480" height="64" viewBox="0 0 480 64" role="img" aria-labelledby="sig-title sig-desc">
   <title id="sig-title">README made with beautify-github-readme</title>
-  <desc id="sig-desc">Compact footer signature: 'README made with beautify-github-readme' with an outbound arrow. Slate background and teal accent match the agents-scaffold hero.</desc>
+  <desc id="sig-desc">Footer credit for the beautify-github-readme skill, with a file-tree motif and an outbound arrow.</desc>
 
-  <!-- Canvas (matches hero palette) -->
-  <rect width="480" height="64" rx="14" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <defs>
+    <linearGradient id="sig-bg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#1E293B"/>
+    </linearGradient>
+  </defs>
 
-  <!-- Eyebrow -->
-  <text x="24" y="38" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#64748B">README MADE WITH</text>
+  <rect width="480" height="64" rx="14" fill="url(#sig-bg)" stroke="#334155" stroke-width="1.5"/>
+  <rect x="0" y="14" width="3" height="36" rx="1.5" fill="#14B8A6"/>
 
-  <!-- Project-native motif (file-tree glyph from hero) -->
-  <text x="176" y="38" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" fill="#334155">└─</text>
-
-  <!-- Skill name -->
-  <text x="208" y="39" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16" font-weight="600" fill="#14B8A6">beautify-github-readme</text>
-
-  <!-- Outbound arrow cue -->
-  <text x="444" y="39" font-family="ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="18" fill="#14B8A6">↗</text>
+  <text x="24" y="38" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#94A3B8">README MADE WITH</text>
+  <text x="176" y="38" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" fill="#64748B">└─</text>
+  <text x="208" y="39" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16" font-weight="600" fill="#5EEAD4">beautify-github-readme</text>
+  <text x="444" y="39" font-family="ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="18" fill="#5EEAD4">↗</text>
 </svg>

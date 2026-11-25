@@ -22,6 +22,15 @@ Detailed rules indexed by `.agents/POLICIES.md`.
 - `format-md` mutates files; `check` and `check-md` must remain non-mutating.
 - Keep skill installation optional; it is not required for verification.
 
+## Scaffold templates
+
+- Keep this repository's `.agents/*.md` files as its own live context.
+- Keep blank, copyable state files in `templates/`.
+- README and INSTALL must point readers to `templates/`, never to the live
+  `.agents/` files here.
+- Do not tell users to copy `LICENSE` or `THIRD_PARTY_NOTICES.md` into their
+  projects; those files cover this scaffold itself.
+
 ## README figures
 
 - Keep SVGs self-contained: no external fonts, images, scripts, or network

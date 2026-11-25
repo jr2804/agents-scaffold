@@ -24,8 +24,8 @@ mise run format-md
 | `AGENTS.md` | Root rail — rules + Child DOX Index |
 | `.agents/POLICIES.md` | Boundaries, priorities, verification |
 | `.agents/FILES.md` | Source-of-truth locations |
-| `README.md` | Positioning, mechanism, and integration examples |
-| `INSTALL.md` | Shipped install/update migration contract |
+| `README.md` | Positioning, install steps, and principles |
+| `INSTALL.md` | Shipped install and migration contract |
 
 ## Where to dig deeper
 
@@ -34,7 +34,7 @@ mise run format-md
 - `.agents/HISTORY.md` — durable decisions and plan archives
 - `.github/workflows/release.yml` — CalVer release automation
 - `assets/readme/` — README figures
-- Subtree `AGENTS.md` files — local contracts for each area
+- `templates/` — blank state files for other projects
 
 ## Available tools
 

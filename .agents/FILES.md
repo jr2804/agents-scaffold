@@ -27,6 +27,7 @@ Kept compact — agents hallucinate less when they know where definitions live.
 | Optional skills | `.config/mise/conf.d/skills.toml` | `add-skills` |
 | Release automation | `.github/workflows/release.yml` | CalVer tag, `GH_TOKEN`, generated notes |
 | README figures | `assets/readme/*.svg` | `hero.svg`, `made-with-beautify.svg` |
+| Copyable blanks | `templates/*.md` | Six state-file templates |
 
 ## Subdirectory
 

@@ -139,6 +139,7 @@ servers, skills, and runtimes used during development.
 - Track `.agents/*.md` and `.agents/history/`; never commit `.agents/plans/`.
 - GitHub is the canonical host; update repository URLs, release automation, and remotes together.
 - Treat `README.md` and `INSTALL.md` as shipped interfaces; keep their examples and links accurate.
+- Keep `.agents/*.md` here as live context; `templates/` holds the copyable blanks.
 - Run `mise run check` after documentation, configuration, workflow, or figure changes.
 
 ## ⛔ No Patching

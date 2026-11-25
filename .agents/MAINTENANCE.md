@@ -37,6 +37,7 @@ How to keep `.agents/` files current.
 | `LICENSE`, `THIRD_PARTY_NOTICES.md` | Licensing or upstream attribution changes |
 | `.github/` | Release behavior, permissions, or GitHub automation changes |
 | `.config/` | Tools, tasks, or Markdown rules change |
+| `templates/` | Blank state-file templates change |
 | `assets/` | README figure structure, accessibility, or palette changes |
 | `plans/` | New feature implementation starts |
 | `history/` | HISTORY.md overflow or completed plans archived |

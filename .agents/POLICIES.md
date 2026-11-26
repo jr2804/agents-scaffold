@@ -1,6 +1,6 @@
-# AGENTS.md — POLICIES
+# State file — POLICIES
 
-Read for boundaries, priorities, verification, and DOX authoring rules.
+Read for boundaries, priorities, verification, and documentation rules.
 
 ## Priorities
 
@@ -30,8 +30,7 @@ Read for boundaries, priorities, verification, and DOX authoring rules.
 
 ## Code quality
 
-Universal defaults. Project-specific standards live in scoped contracts or
-`.agents/policies/repository.md`.
+Universal defaults.
 
 - **SRP** — one reason to change per module/function.
 - **DRY** — check before adding. Extract on third occurrence (Rule of Three).
@@ -41,18 +40,27 @@ Universal defaults. Project-specific standards live in scoped contracts or
   abstraction.
 - No new code-quality tooling by default — opt in per project.
 
+## Documentation
+
+- A rule lives in the highest tier that fully applies: root `AGENTS.md`, then
+  the owning state file, then a subtree contract.
+- One canonical home per rule; other files use pointer lines.
+- Record durable decisions and rejected alternatives in `HISTORY.md`.
+- Plans are gitignored; completed plans are archived under `.agents/history/`
+  and linked from `HISTORY.md`.
+
+## Repository
+
+- Keep README figures self-contained, accessible SVGs with the slate/teal
+  palette; validate their XML.
+- Keep licensing and upstream attribution current.
+- Keep GitHub workflows verification-only unless the user asks for publishing.
+
 ## Completion checklist
 
 - Change solves the stated problem
 - Relevant validation ran (or gaps stated)
 - No unintended side effects or secrets exposed
-
-## DOX rule index
-
-- `.agents/policies/dox.md` — authoring tiers, plans, state subdirectories,
-  documentation archives, and size budgets.
-- `.agents/policies/repository.md` — GitHub releases, local tooling, README
-  figures, and licensing.
 
 ## Verification
 
@@ -62,9 +70,7 @@ mise run format-md
 ```
 
 `check` is non-mutating. Run `format-md` only when formatting changes are
-intended. Release automation is verified on GitHub with
-`gh workflow view release` and `gh run list`; see
-`.agents/policies/repository.md`.
+intended.
 
 ## Response format
 

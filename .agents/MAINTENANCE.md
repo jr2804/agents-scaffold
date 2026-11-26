@@ -1,4 +1,4 @@
-# AGENTS.md — MAINTENANCE
+# State file — MAINTENANCE
 
 How to keep `.agents/` files current.
 
@@ -11,15 +11,15 @@ How to keep `.agents/` files current.
 
 ## Principles
 
-- **Single source of truth.** Each rule lives in exactly one file. The tier,
-  pointer, rationale, and size rules are in **DOX authoring**
-  (`.agents/POLICIES.md`) — consult it on every DOX change.
+- **Single source of truth.** Each rule lives in exactly one file. Use pointer
+  lines instead of repeating it elsewhere.
 - **AGENTS.md is an index.** It points to `.agents/` files, does not replace them.
-- **No logbooks.** State files describe current contracts; git owns history — see `.agents/POLICIES.md`.
-- **State files stay lean.** When a file approaches its size budget, split
-  detail into the matching subdirectory (`.agents/files/`, `.agents/policies/`,
-  `.agents/tools/`, `.agents/maintenance/`) — every file there MUST be listed
-  in its state file.
+- **No logbooks.** State files describe current contracts; git owns history.
+- **State files stay lean.** When a file approaches **120 lines**, split detail
+  into the optional subdirectory listed in root `AGENTS.md`. Every file there
+  MUST be listed in its state file.
+- **Plans are temporary.** `.agents/plans/` is gitignored; completed plans are
+  archived under `.agents/history/` and linked from `HISTORY.md`.
 
 ## File update triggers
 
@@ -35,10 +35,10 @@ How to keep `.agents/` files current.
 | `README.md` | Positioning, examples, canonical URLs, or figures change |
 | `INSTALL.md` | Install/update contract or migration guidance changes |
 | `LICENSE`, `THIRD_PARTY_NOTICES.md` | Licensing or upstream attribution changes |
-| `.github/` | Release behavior, permissions, or GitHub automation changes |
+| `.github/` | Workflow, permissions, or GitHub automation changes |
 | `.config/` | Tools, tasks, or Markdown rules change |
 | `templates/` | Blank state-file templates change |
 | `assets/` | README figure structure, accessibility, or palette changes |
 | `plans/` | New feature implementation starts |
 | `history/` | HISTORY.md overflow or completed plans archived |
-| `files/`, `policies/`, `tools/`, `maintenance/` | State files split into subdirectories |
+| `files/`, `tools/`, `maintenance/` | State files split into subdirectories |

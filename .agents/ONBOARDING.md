@@ -1,4 +1,4 @@
-# AGENTS.md — ONBOARDING
+# State file — ONBOARDING
 
 Read this when starting a new session. After first read, only revisit when
 project structure or tooling changes significantly.
@@ -13,9 +13,9 @@ Copy-paste DOX convention for lean root instructions, conditionally read
 
 ```bash
 mise install
-mise run check
-mise run format-md
 ```
+
+Verification commands are in `.agents/POLICIES.md`.
 
 ## Entry points (read these first)
 
@@ -32,7 +32,7 @@ mise run format-md
 - `.agents/TOOLS.md` — tools, skills, runtimes, and project tasks
 - `.agents/MAINTENANCE.md` — state-file ownership and update triggers
 - `.agents/HISTORY.md` — durable decisions and plan archives
-- `.github/workflows/release.yml` — CalVer release automation
+- `.github/workflows/check.yml` — non-mutating CI verification
 - `assets/readme/` — README figures
 - `templates/` — blank state files for other projects
 

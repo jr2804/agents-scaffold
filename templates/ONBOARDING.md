@@ -1,4 +1,4 @@
-# AGENTS.md — ONBOARDING
+# State file — ONBOARDING
 
 Read when starting a new session. Revisit when structure or tooling changes.
 

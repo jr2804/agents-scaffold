@@ -1,8 +1,8 @@
-# AGENTS.md — TOOLS
+# State file — TOOLS
 
-State file: inventory of tools used in development — CLIs, MCP servers,
-skills, runtimes, and project scripts. Read it when relevant, like all state
-files; keep it current (see `.agents/MAINTENANCE.md`).
+Inventory of tools used in development — CLIs, MCP servers, skills, runtimes,
+and project scripts. Read it when relevant, like all state files; keep it
+current (see `.agents/MAINTENANCE.md`).
 
 ## Rules
 
@@ -24,8 +24,8 @@ If this file grows past its size budget, split detail into
 | `mise` | Local setup and repeatable tasks | Declares tools and runs check/format/skill tasks |
 | `bun` | Optional skill installation | Runs the existing `skills` CLI through `bun x` |
 | `rumdl` | Markdown changes | Lints and formats GFM with `.config/rumdl.toml` |
-| `git` | Every change | Version control, history, tags, and remotes |
-| `gh` | GitHub hosting and releases | Repository, workflow, release, and remote verification |
+| `git` | Every change | Version control and history |
+| `gh` | GitHub hosting | Repository and workflow status |
 | Python 3 | SVG changes | Standard-library XML validation for README figures |
 
 ## MCP servers

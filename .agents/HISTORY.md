@@ -1,14 +1,14 @@
-# AGENTS.md — HISTORY
+# State file — HISTORY
 
-State file. The one file that may reference the past — sparingly. Read when
-relevant to the current task; long-term memory for decisions, not a log.
-Routine history lives in git; only record what is costly to rediscover.
+The one file that may reference the past — sparingly. Read when relevant to the
+current task; long-term memory for decisions, not a log. Routine history lives
+in git; only record what is costly to rediscover.
 
 ## Format
 
 | Date | Decision | Rationale | Git ref |
 | ---- | -------- | --------- | ------- |
-| 2026-11-25 | GitHub canonical; checked releases | Codeberg restricts AI projects | `9a1c9ab`; [archive](./history/2026-11-25-github-migration.md) |
+| 2026-11-25 | GitHub canonical host | Codeberg restricts AI projects | `9a1c9ab`; [archive](./history/2026-11-25-github-migration.md) |
 | 2026-11-25 | Live `.agents/`; templates are blanks | Docs pointed at live state | `f89464e`; [archive](./history/2026-11-25-template-reset.md) |
 
 ## Record
@@ -20,13 +20,13 @@ Routine history lives in git; only record what is costly to rediscover.
 
 ## Do not record
 
-- Routine commits, refactor logs, session activity, release notes.
+- Routine commits, refactor logs, session activity, routine notes.
 - Anything obvious from git, the code, or current AGENTS.md/state files.
 
 ## Guidance
 
 - Keep entries brief — enough to reconstruct the reasoning.
-- Link to the relevant commits or tags.
+- Link to the relevant commits.
 - If this file grows large, move older entries to `.agents/history/` and keep
   a pointer here.
 - Completed implementation plans are archived as single files at

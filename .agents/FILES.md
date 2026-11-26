@@ -1,4 +1,4 @@
-# AGENTS.md — FILES
+# State file — FILES
 
 Single source of truth for paths, config keys, and naming conventions.
 Kept compact — agents hallucinate less when they know where definitions live.
@@ -15,9 +15,8 @@ Kept compact — agents hallucinate less when they know where definitions live.
 |------|-------|-----------|
 | DOX root contract | `AGENTS.md` | Project rules, Child DOX Index, No Patching |
 | State-file contracts | `.agents/*.md` | ONBOARDING, POLICIES, FILES, TOOLS, HISTORY, MAINTENANCE |
-| Detailed DOX rules | `.agents/policies/dox.md` | Authoring, plans, archives, size budgets |
-| Repository policies | `.agents/policies/repository.md` | Releases, tooling, figures, licensing |
-| Install/update behavior | `INSTALL.md` | Modes, immutable source, fail-closed migration |
+| Documentation rules | `.agents/POLICIES.md` | Rule tiers, pointers, decisions, plans |
+| Install/update behavior | `INSTALL.md` | Default branch, fail-closed migration |
 | Project license | `LICENSE` | MIT terms |
 | Upstream notices | `THIRD_PARTY_NOTICES.md` | DOX and AGENTS.md attribution |
 | Canonical repository URL | `README.md` | GitHub raw URL for `INSTALL.md` |
@@ -25,7 +24,7 @@ Kept compact — agents hallucinate less when they know where definitions live.
 | Tool declarations | `.config/mise/config.toml` | `tools.bun`, `tools.rumdl` |
 | Project tasks | `.config/mise/conf.d/format.toml` | `check`, `check-md`, `format-md` |
 | Optional skills | `.config/mise/conf.d/skills.toml` | `add-skills` |
-| Release automation | `.github/workflows/release.yml` | CalVer tag, `GH_TOKEN`, generated notes |
+| GitHub check workflow | `.github/workflows/check.yml` | `push`, `pull_request`, `mise run check` |
 | README figures | `assets/readme/*.svg` | `hero.svg`, `made-with-beautify.svg` |
 | Copyable blanks | `templates/*.md` | Six state-file templates |
 

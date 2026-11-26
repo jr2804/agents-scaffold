@@ -1,4 +1,4 @@
-# AGENTS.md — MAINTENANCE
+# State file — MAINTENANCE
 
 How to keep `.agents/` files current.
 

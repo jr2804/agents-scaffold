@@ -1,4 +1,4 @@
-# AGENTS.md — HISTORY
+# State file — HISTORY
 
 The one state file that may reference the past. Record decisions that are
 costly to rediscover; leave routine history to Git.
@@ -7,7 +7,7 @@ costly to rediscover; leave routine history to Git.
 
 | Date | Decision | Rationale | Git ref |
 | ---- | -------- | --------- | ------- |
-| YYYY-MM-DD | [decision] | [why] | [commit or tag] |
+| YYYY-MM-DD | [decision] | [why] | [commit] |
 
 ## Record
 
@@ -17,7 +17,7 @@ costly to rediscover; leave routine history to Git.
 
 ## Do not record
 
-- Routine commits, session activity, or release notes.
+- Routine commits, session activity, or routine notes.
 - Anything obvious from Git or current state files.
 
 ## Archiving

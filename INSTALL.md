@@ -30,8 +30,6 @@ project context, not blanks for another project. `LICENSE` and
 !/.agents/history/**
 !/.agents/files/
 !/.agents/files/**
-!/.agents/policies/
-!/.agents/policies/**
 !/.agents/tools/
 !/.agents/tools/**
 !/.agents/maintenance/
@@ -41,22 +39,13 @@ project context, not blanks for another project. `LICENSE` and
 
 ## Templates
 
-| File | Read when | Purpose |
-| ---- | --------- | ------- |
-| `ONBOARDING.md` | New session | Orientation and entry points |
-| `POLICIES.md` | Boundaries or verification | Priorities and constraints |
-| `FILES.md` | Touching files or config | Source-of-truth locations |
-| `TOOLS.md` | Using tools or skills | Tool inventory |
-| `HISTORY.md` | Background needed | Durable decisions |
-| `MAINTENANCE.md` | Changing `.agents/` | Update triggers and upkeep |
-
-Each state file may gain a matching `.agents/<topic>/` directory when it
-approaches 120 lines. Every detail file must be listed in its state file.
+The six files in `templates/` mirror the state table in root `AGENTS.md`.
+Copy them all, then delete the ones you do not need.
 
 ## For coding agents
 
-1. Fetch `AGENTS.md` and `templates/*.md` from an immutable release tag or
-   commit at <https://github.com/jr2804/agents-scaffold>.
+1. Fetch `AGENTS.md` and `templates/*.md` from the default branch at
+   <https://github.com/jr2804/agents-scaffold>.
 2. If any required file cannot be fetched, stop and report the failure. Do not
    fall back to stale content in the conversation.
 3. Merge the template files into the repository. Preserve project-specific
@@ -67,7 +56,6 @@ approaches 120 lines. Every detail file must be listed in its state file.
 
 - Move the project description to `README.md`; keep at most one sentence in
   `AGENTS.md`.
-- Remove tree views, routine history, and TODO lists from `AGENTS.md`.
 - Move non-essential rules to `.agents/POLICIES.md`, tool inventories to
   `.agents/TOOLS.md`, and path definitions to `.agents/FILES.md`.
 - Move durable decisions to `.agents/HISTORY.md` with Git references.

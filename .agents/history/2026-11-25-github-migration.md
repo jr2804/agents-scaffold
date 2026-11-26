@@ -30,18 +30,16 @@ injection remain client-dependent.
 ## Implemented changes
 
 - Replaced placeholder DOX indexes and state files with current repository
-  contracts; split detailed policy into `.agents/policies/` to honor the
-  120-line state-file budget.
+  contracts.
 - Made user instructions explicitly override repository instructions and
   narrowed No Patching to prohibit autonomous post-marker injection.
 - Reworked the README, install/update contract, comparison table, hero SVG, and
   footer SVG; removed stale Codeberg setup URLs and the duplicate Codeberg skill
   source.
-- Made updates fetch an immutable tag or commit and the full canonical file set,
-  failing closed instead of falling back to stale in-context content.
-- Replaced Forgejo release automation with a GitHub Actions workflow that pins
-  actions, runs `mise run check`, serializes CalVer releases, and grants
-  `contents: write` only to the release job.
+- Made updates fetch the full canonical file set from GitHub, failing closed
+  instead of falling back to stale in-context content.
+- Replaced Forgejo automation with a GitHub Actions workflow that pins actions
+  and runs `mise run check`.
 - Added MIT licensing and preserved DOX/AGENTS.md notices in
   `THIRD_PARTY_NOTICES.md`.
 - Made GitHub the canonical remote while retaining the old Codeberg remote as
@@ -53,6 +51,6 @@ injection remain client-dependent.
   validation for both README SVGs.
 - `git diff --check` passed.
 - Workflow YAML parsed successfully with the expected `push`/manual triggers,
-  one release job, and ordered checkout, install, check, tag, and release steps.
-- Repository metadata and live release automation are verified after the first
-  GitHub push.
+  one job, and ordered checkout, install, and check steps.
+- Repository metadata and live automation are verified after the first GitHub
+  push.

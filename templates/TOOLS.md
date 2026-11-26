@@ -1,4 +1,4 @@
-# AGENTS.md — TOOLS
+# State file — TOOLS
 
 Inventory of development-time tools. Describe current usage, not history.
 
@@ -24,5 +24,4 @@ None configured.
 | ------- | ------- |
 | [command] | [what it does] |
 
-If this file approaches 120 lines, split detail into `.agents/tools/` and list
-every file here.
+Split detail into `.agents/tools/` and list every file here.

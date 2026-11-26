@@ -1,4 +1,4 @@
-# AGENTS.md — FILES
+# State file — FILES
 
 Single source of truth for paths, config keys, and naming conventions. Keep it
 short so agents do not guess.
@@ -17,5 +17,4 @@ short so agents do not guess.
 
 ## Subdirectory
 
-If this file approaches 120 lines, split detail into `.agents/files/` and list
-every file here.
+Split detail into `.agents/files/` and list every file here.

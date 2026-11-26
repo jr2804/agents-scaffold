@@ -1,4 +1,4 @@
-# AGENTS.md — POLICIES
+# State file — POLICIES
 
 Read for boundaries, priorities, and verification.
 

@@ -4,18 +4,18 @@ Implementation commit: `8637d61`
 
 ## Context
 
-The issue report found that the scaffold had accumulated versioned artifacts,
+The issue report found that the scaffold had accumulated published artifacts,
 duplicated rules, an extra policy directory, and a drifted copy of the DOX
 core. The project is copied into other repositories; it does not need package
-versioning or publishing automation.
+publishing automation.
 
 ## Decisions
 
-- Keep no version numbers or versioned artifacts. Remove all existing GitHub
-  versions and local or remote version references.
+- Keep no numbered artifacts. Remove all existing GitHub artifacts and local
+  or remote references to them.
 - Replace publishing automation with a read-only CI workflow on `push` and
   `pull_request`. It runs `mise run check`; it does not write to the repository.
-- Install and migration docs fetch from the `main` branch, not a versioned
+- Install and migration docs fetch from the `main` branch, not a fixed
   reference.
 - Keep a single `.agents/POLICIES.md`. Fold rule tiers, pointers, plans, figures,
   licensing, and workflow limits into it; remove the policy subdirectory.
@@ -37,6 +37,6 @@ versioning or publishing automation.
 - `README.md` now states why the project exists and names the context tree.
 - `INSTALL.md` is a short copy, fill, ignore, check, and migration guide.
 - `.agents/` has six state files and no policy subdirectory.
-- GitHub has no versions or versioned artifacts, and CI is check-only.
+- GitHub has no published artifacts, and CI is check-only.
 - `mise run check` passes, including the stricter table line-length check.
 - The publishing workflow and its write permission were removed.

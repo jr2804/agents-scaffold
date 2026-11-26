@@ -10,7 +10,7 @@ in git; only record what is costly to rediscover.
 | ---- | -------- | --------- | ------- |
 | 2026-11-25 | GitHub canonical host | Codeberg restricts AI projects | `9a1c9ab`; [archive](./history/2026-11-25-github-migration.md) |
 | 2026-11-25 | Live `.agents/`; templates are blanks | Docs pointed at live state | `f89464e`; [archive](./history/2026-11-25-template-reset.md) |
-| 2026-11-26 | No version publishing; check-only CI | Scaffold is copied, not consumed as a package | `8637d61`; [archive](./history/2026-11-26-issue-cleanup.md) |
+| 2026-11-26 | No publishing automation; check-only CI | Scaffold is copied, not consumed as a package | `8637d61`; [archive](./history/2026-11-26-issue-cleanup.md) |
 
 ## Record
 

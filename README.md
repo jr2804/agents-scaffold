@@ -27,9 +27,11 @@ scoped to where they apply.
 
 ### Agent
 
-Give your coding agent this file:
+Paste this into your coding agent:
 
-<https://raw.githubusercontent.com/jr2804/agents-scaffold/main/INSTALL.md>
+```text
+Please install or update the framework given in https://raw.githubusercontent.com/jr2804/agents-scaffold/main/INSTALL.md
+```
 
 ## Context Tree
 
